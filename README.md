@@ -2,6 +2,7 @@
 Repository for Project I
 
 # DIRECTORY STRUCTURE
+```
 ETIC_PW2425_PROJETO_I/
 ├── README.md
 ├── Dockerfile
@@ -58,3 +59,4 @@ ETIC_PW2425_PROJETO_I/
        │    └── main.js
        └── assets/
             └── logo.png
+```
