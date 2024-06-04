@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "admin_app",
+    "authentication",
+    "EDrive",
+    "file_management",
+
 ]
 
 MIDDLEWARE = [
