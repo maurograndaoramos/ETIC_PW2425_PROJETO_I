@@ -16,8 +16,15 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from .views import landing_page
+from django.contrib.auth import login
+
+app_name = 'EDrive'
 
 urlpatterns = [
+    path("authentication/", include("authentication.urls")),
+    path("files/", include("files.urls")),
     path("admin/", admin.site.urls),
+    path("", landing_page.as_view(), name='landing_page'),
 ]

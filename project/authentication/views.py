@@ -4,9 +4,9 @@ from . import RegisterForm
 from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required
-@permission_required('file_management.view_files', raise_exception=True)
+@permission_required('files.view_files', raise_exception=True)
 def file_list(request):
-    # Logic for listing files
+
     pass
 
 
