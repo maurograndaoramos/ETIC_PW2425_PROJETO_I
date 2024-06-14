@@ -1,16 +1,17 @@
-.PHONY: help migrate up down
-
+.PHONY: help migrate migration_sync up down
 # ALGUÉM ME LIBERTA DESSE MAKEFILE PELO AMOR DE DEUS
 help:
-	@echo "make migration - Run Django migrations"
-	@echo "make migration sync - Run Django migrations and sync database"
 	@echo "make up      - Start the Docker Compose services"
 	@echo "make down    - Stop and remove Docker Compose services and images"
+	@echo "make superuser - Create a superuser"
+	@echo "make migration - Run Django migrations"
+	@echo "make migration_sync - Run Django migrations and sync database"
+
 
 migration:
 	(cd EDrive && python3 manage.py makemigrations && python3 manage.py migrate)
 
-migration sync:
+migration_sync:
 	(cd EDrive && python3 manage.py makemigrations && python3 manage.py migrate --run-syncdb)
 
 superuser:
@@ -19,11 +20,9 @@ superuser:
 flush:
 	(cd EDrive && python3 manage.py flush)
 
-superuser:
-	(cd EDrive && python manage.py createsuperuser)
-
 up:
 	docker compose up
 
 down:
 	docker compose down --rmi all --volumes --remove-orphans
+

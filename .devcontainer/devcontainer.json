@@ -27,5 +27,5 @@
 	"remoteUser": "root",
 
 	// Installs poetry and sets up the virtual environment so I don't have to do it manually
-	"postAttachCommand": "poetry install"
+	"postAttachCommand": "poetry install && make help"
 }
