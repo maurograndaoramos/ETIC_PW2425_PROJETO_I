@@ -1,0 +1,18 @@
+{% extends "drive_generic.html" %}
+
+{% block content %}
+<h1>Your folders</h1>
+{% if folder_list %}
+  <ul>
+    {% for folder in folder_list %}
+    <li>
+      <a href="{{ folder.get_absolute_url }}">{{ folder.folder_name }}</a>
+    </li>
+    {% empty %}
+    <li>There are no folders.</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>There are no folders in the library.</p>
+{% endif %}
+{% endblock %}

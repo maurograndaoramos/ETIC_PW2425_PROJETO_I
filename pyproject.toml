@@ -5,11 +5,11 @@ description = "This is a gdrive inspired app, a project created for PROJETO I"
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.0.6"
-
 
 [build-system]
 requires = ["poetry-core"]
