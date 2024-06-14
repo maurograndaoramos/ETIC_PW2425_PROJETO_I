@@ -8,14 +8,17 @@ Repository for Project I
 - [x] Get hyped about coding again cuz yeah this ain't been it
 - [x] Create apps, structure File & Folder Model
 - [ ] Fix the nasty upload bug (Consider moving hash logic to POST)
-- [x] Bumped to 0.1.b1
+- [x] Bump to 0.1.b1
 - [x] Create templates and views for Drive
 - [x] Start Web app to handle main page
-- [x] Bumped to 0.2.0
+- [x] Bump to 0.2.0
 - [ ] Finish User Authentication
 - [ ] Handle POSTs and GETs for File/Folder up/download
-- [ ] 
-- [ ] 
+- [ ] Bump to 0.3.0
+- [ ] Beautify Frontend
+- [ ] Something that I'm probably forgetting
+- [ ] Update README.md for professionalism
+- [ ] Release at 1.0.0
 
 # DIRECTORY STRUCTURE
 ```
