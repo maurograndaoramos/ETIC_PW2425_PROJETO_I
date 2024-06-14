@@ -26,4 +26,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='drive/', permanent=True)),
     path("home/", include("web.urls")),
     path("admin/", admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
