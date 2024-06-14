@@ -1,0 +1,15 @@
+{% extends 'home_generic.html' %}
+
+{% block title %}
+  <title>Signup - Local Library</title>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Signup">
+</form>
+
+{% endblock %}
