@@ -6,6 +6,7 @@ help:
 	@echo "make superuser - Create a superuser"
 	@echo "make migration - Run Django migrations"
 	@echo "make migration_sync - Run Django migrations and sync database"
+	@echo "make flush - Flush database"
 
 
 migration:

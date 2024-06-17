@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     {% block title %}
-      <title>Local Library</title>
+      <title>EDrive</title>
     {% endblock %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +10,7 @@
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous">
-    <!-- Add additional CSS in static file -->
+    <!-- Add additional CSS in static file in case I need it later - Pretty sure can -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
@@ -24,8 +24,20 @@
               <li><a href="">Upgrade</a></li>
               <li><a href="">Log Out</a></li>
             </ul>
+            <ul>
+              <li>
+                Quota: {{ used_quota }}/{{ user.quota_limit }}
+              </li>
+            </ul>
           {% endblock %}
         </div>
+        <!-- Not sure if this is needed but will be left for last -->
+        <!-- {% if folder_path %}
+        <div class="directory-path">
+          Drive{% for folder in folder_path %} / <a href="{{ folder.url }}">{{ folder.name }}</a>{% endfor %}
+        </div>
+      {% endif %} -->
+      <!-- I gotta remember to update the views.py file to include the folder_path variable if we do, tho -->
         <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
       </div>
     </div>

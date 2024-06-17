@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 import os
 import hashlib
@@ -35,23 +36,20 @@ class File(models.Model):
         return self.file_path.url
 
     def save(self, *args, **kwargs):
-        if not self.pk:  # Check if this is a new file
-            # The initial full path where Django initially stores the file
+        if not self.pk:
             if self.file_path:
                 self.file_size = self.file_path.size
                 self.file_name = self.file_path.name
 
             original_full_path = self.file_path.path
 
-            # Generating the hash based on the filename and owner
             original_name = os.path.basename(original_full_path)
             hash_input = f"{self.file_id}{self.file_timestamp}{self.file_name}"
             self.hash = hashlib.sha256(hash_input.encode()).hexdigest()
             file_extension = os.path.splitext(original_name)[1]
             new_filename = f"{self.hash}{file_extension}"
 
-            # Since Django automatically saves the file in 'drive/uploads/', we just update the name
-            self.file_path.name = new_filename  # Set the name to the hash filename
+            self.file_path.name = new_filename
 
         super().save(*args, **kwargs)
 
@@ -70,6 +68,9 @@ class Folder(models.Model):
             models.Index(fields=["folder_name"]),
             models.Index(fields=["owner"]),
         ]
+
+    def get_absolute_url(self):
+        return reverse('folder', args=[str(self.folder_id)])
     
     def __str__(self):
         return self.folder_name

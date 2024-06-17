@@ -3,3 +3,23 @@
     padding: 0;
     list-style: none;
   }
+
+  .file-grid-wrapper {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    width: 100%; /* Set the width to take full available width */
+    padding: 10px;
+  }
+  
+  .file-grid {
+    display: grid;
+    grid-auto-flow: column; /* This changes the grid flow to horizontal */
+    grid-auto-columns: minmax(250px, 1fr); /* Specifies the width of each column */
+    grid-gap: 20px;
+  }
+  
+  .file-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
