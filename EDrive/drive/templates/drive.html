@@ -44,8 +44,8 @@
       <div class="file-grid">
         {% for file in file_list %}
         <div class="file-item">
-          <a href="{{ file.get_absolute_url }}">{{ file.file_name }}</a>
-          <a href="{{ file.get_absolute_url }}" target="_blank">{{ file.file_name }}</a> - 
+          <a href="{{ file.get_absolute_url }} ">{{ file.file_name }}</a>
+          <a href="{% url 'view_file' file.file_id %}" target="_blank">{{ file.file_name }}</a> - 
           <a href="{% url 'download_file' file.file_id %}">DOWNLOAD</a>
           /
           <form action="{% url 'rename_file' file.file_id %}" method="post">

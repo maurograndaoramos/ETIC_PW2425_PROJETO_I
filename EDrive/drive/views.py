@@ -2,35 +2,38 @@ import os
 import zipfile
 from django.shortcuts import render,get_object_or_404, redirect
 from django.http import FileResponse, HttpResponse
-from mimetypes import guess_type
-import urllib.parse
 from drive.models import File, Folder
 from django.db import models
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.utils import timezone
 
 def upload_file(request):
     if request.method == 'POST':
         file = request.FILES['file']
-        # Save file logic here
-        return redirect('file_view')
+        # Assuming you want to upload to the root, file_parent_id will be None or get from request
+        file_parent_id = request.POST.get('folder_id', None)
+        file_parent = None
+        if file_parent_id:
+            file_parent = Folder.objects.get(pk=file_parent_id)
+        
+        new_file = File(file_path=file, owner=request.user, file_parent=file_parent)
+        
+        new_file.file_name = file.name
+        new_file.file_size = file.size
+        new_file.file_timestamp = timezone.now()
+        
+        new_file.save()
+
+        return redirect('drive')
+    else:
+        return redirect('drive')
     
 def create_folder(request):
     if request.method == 'POST':
         folder_name = request.POST.get('folder_name')
         # Create folder logic here
         return redirect('folder_view')
-
-@login_required
-def generic_view(request):
-
-
-
-
-    context = {
-
-    }
-    return render(request, 'drive_generic.html', context)
 
 @login_required
 def drive_view(request):
@@ -83,16 +86,8 @@ def download_file(request, file_id):
 
 login_required
 def view_file(request, file_id):
-    file = get_object_or_404(File, id=file_id)
-    content_type, _ = guess_type(file.file_path)
-    response = FileResponse(open(file.file_path, 'rb'), content_type=content_type)
-
-    # Setting the filename with proper encoding for the header
-    filename_header = urllib.parse.quote(file.file_name.encode('utf8'))
-    if file.file_type in ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mp3']:  # Add other types as needed
-        response['Content-Disposition'] = f'inline; filename*=UTF-8\'\'{filename_header}'
-    else:
-        response['Content-Disposition'] = f'attachment; filename*=UTF-8\'\'{filename_header}'
+    file = get_object_or_404(File, file_id=file_id)
+    response = FileResponse(file.file_path.open('rb'), filename=file.file_name)
 
     return response
 

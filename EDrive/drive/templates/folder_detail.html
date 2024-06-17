@@ -1,6 +1,18 @@
 {% extends "drive_generic.html" %}
 
 {% block content %}
+<form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="file">
+  <button type="submit">Upload</button>
+</form>
+
+<form action="{% url 'create_folder' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="folder_name" placeholder="New Folder Name">
+  <button type="submit">Create Folder</button>
+</form>
+
 <h1>Folder Details</h1>
 
 <h2>Subfolders:</h2>
@@ -31,25 +43,30 @@
 <h2>Files in this folder:</h2>
 
 {% if files %}
-  <ul>
-      {% for file in files %}
-      <li>
-          <a href="{{ file.get_absolute_url }}">{{ file.file_name }}</a> - 
-          <a href="{% url 'download_file' file.file_id %}">DOWNLOAD</a>
-          /
-          <form action="{% url 'rename_file' file.file_id %}" method="post">
+  <div class="file-grid-wrapper">
+    <div class="file-grid">
+      <ul>
+          {% for file in files %}
+          <div class="file-item">
+            <a href="{{ file.get_absolute_url }} ">{{ file.file_name }}</a>
+            <a href="{% url 'view_file' file.file_id %}" target="_blank">{{ file.file_name }}</a> - 
+            <a href="{% url 'download_file' file.file_id %}">DOWNLOAD</a>
+            /
+            <form action="{% url 'rename_file' file.file_id %}" method="post">
               {% csrf_token %}
               <input type="text" name="new_name" placeholder="Enter new name" required>
               <button type="submit">Rename</button>
-          </form>
-          / 
-          <form action="{% url 'delete_file' file.file_id %}" method="post" style="display: inline;">
+            </form>
+            / 
+            <form action="{% url 'delete_file' file.file_id %}" method="post" style="display: inline;">
               {% csrf_token %}
               <button type="submit" onclick="return confirm('Are you sure you want to delete this file?');">DELETE</button>
-          </form>
-      </li>
-      {% endfor %}
-  </ul>
+            </form>
+          </div>
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% else %}
   <p>There are no files in this folder.</p>
 {% endif %}
