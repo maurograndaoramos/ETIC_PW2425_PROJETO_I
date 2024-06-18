@@ -4,7 +4,7 @@
 <div class="upload-section">
   <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
     {% csrf_token %}
-    <input type="file" name="file" class="form-control mb-2 mr-sm-2">
+    <input type="file" name="file" class="form-control mb-2 mr-sm-2" required>
     <button type="submit" class="btn btn-primary mb-2">Upload</button>
   </form>
 
@@ -33,6 +33,18 @@
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this folder?');">DELETE</button>
           </form>
+
+          <form action="{% url 'move_folder' folder.folder_id %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <select name="destination_folder" class="form-control form-control-sm mr-2">
+              <option value="">Select destination folder</option>
+              {% for f in folder_list %}
+              <option value="{{ f.folder_id }}">{{ f.folder_name }}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Move</button>
+          </form>
+
         </div>
       </div>
       {% endfor %}

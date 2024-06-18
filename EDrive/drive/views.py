@@ -40,7 +40,7 @@ def folder_view(request, folder_id):
     current_user = request.user
 
     folder = get_object_or_404(Folder, pk=folder_id, owner=current_user)
-    subfolders = Folder.objects.filter(folder_parent=folder, owner=current_user)
+    subfolders = Folder.objects.filter(folder_parent=folder, owner=current_user).order_by('folder_name')
     files_in_folder = File.objects.filter(file_parent=folder, owner=current_user)
 
     used_quota_bytes = File.objects.filter(owner=current_user).aggregate(total_size=models.Sum('file_size'))['total_size'] or 0
@@ -95,6 +95,17 @@ def rename_file(request, file_id):
     file.save()
     return redirect('drive')
 
+@login_required
+@require_POST
+def move_file(request, file_id):
+    current_user = request.user
+    file = get_object_or_404(File, file_id=file_id, owner=current_user)
+    new_folder_id = request.POST.get('folder_id')
+    new_folder = Folder.objects.get(pk=new_folder_id)
+    file.file_parent = new_folder
+    file.save()
+    return redirect('folder', folder_id=new_folder_id)
+
 
 
 # FOLDER MANAGEMENT VIEWS
@@ -133,6 +144,17 @@ def rename_folder(request, folder_id):
     folder.folder_name = new_name
     folder.save()
     return redirect('drive')
+
+@login_required
+@require_POST
+def move_folder(request, folder_id):
+    current_user = request.user
+    folder = get_object_or_404(Folder, folder_id=folder_id, owner=current_user)
+    new_folder_id = request.POST.get('folder_id')
+    new_folder = Folder.objects.get(pk=new_folder_id)
+    folder.folder_parent = new_folder
+    folder.save()
+    return redirect('folder', folder_id=new_folder_id)
 
 
 # FILE UPLOAD AND FOLDER CREATION VIEWS

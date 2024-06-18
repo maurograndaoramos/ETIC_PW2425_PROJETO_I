@@ -5,7 +5,7 @@
   <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
     {% csrf_token %}
     <input type="hidden" name="folder_id" value="{{ folder.folder_id }}">
-    <input type="file" name="file" class="form-control mb-2 mr-sm-2">
+    <input type="file" name="file" class="form-control mb-2 mr-sm-2" required>
     <button type="submit" class="btn btn-primary mb-2">Upload</button>
   </form>
 
@@ -23,7 +23,9 @@
 {% if subfolders %}
   <div class="folder-grid-wrapper">
     <div class="folder-grid">
+
       {% for folder in subfolders %}
+      
       <div class="folder-item card">
         <div class="card-body">
           <a href="{{ folder.get_absolute_url }}" class="card-link">{{ folder.folder_name }}</a>
