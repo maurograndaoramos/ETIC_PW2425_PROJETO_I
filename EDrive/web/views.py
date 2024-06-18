@@ -31,13 +31,22 @@ def signup(request):
             print(form.errors)
     else:
         form = SignUpForm()
-    return render(request, 'auth/signup.html', {'form': form})
+
+    if request.user.is_authenticated:
+        return redirect('drive')
+    else:
+        return render(request, 'auth/signup.html', {'form': form})
 
 class Login(LoginView):
-    template_name="auth/login.html"
-    fields= "__all__"
+    template_name = "auth/login.html"
+    fields = "__all__"
     redirect_authenticated_user = True
-    success_url = "posts"
+    success_url = reverse_lazy("drive")
+
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect(self.success_url)
+        return super().get(request, *args, **kwargs)
 
 class Logout(LogoutView):
     next_page = reverse_lazy('home')
