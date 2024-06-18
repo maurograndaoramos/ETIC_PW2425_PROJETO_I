@@ -3,12 +3,14 @@
 {% block content %}
 <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
+  <input type="hidden" name="folder_id" value="{{ folder.folder_id }}">
   <input type="file" name="file">
   <button type="submit">Upload</button>
 </form>
 
 <form action="{% url 'create_folder' %}" method="post">
   {% csrf_token %}
+  <input type="hidden" name="folder_id" value="{{ folder.folder_id }}">
   <input type="text" name="folder_name" placeholder="New Folder Name">
   <button type="submit">Create Folder</button>
 </form>

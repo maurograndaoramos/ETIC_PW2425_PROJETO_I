@@ -7,16 +7,18 @@ Repository for Project I
 # TO-DO
 - [x] Get hyped about coding again cuz yeah this ain't been it
 - [x] Create apps, structure File & Folder Model
-- [ ] Fix the nasty upload bug (Consider moving hash logic to POST)
 - [x] Bump to 0.1.b1
 - [x] Create templates and views for Drive
 - [x] Start Web app to handle main page
 - [x] Bump to 0.2.0
-- [ ] Finish User Authentication
-- [ ] Handle POSTs and GETs for File/Folder up/download
-- [ ] Bump to 0.3.0
+- [x] "Finish" User Authentication
+- [x] Handle POSTs and GETs for File/Folder up/download
+- [x] Bump to 0.3.0
 - [ ] Beautify Frontend
-- [ ] Something that I'm probably forgetting
+- [ ] Create a Card system for each file and each folder
+- [ ] Create Javascript handling for empty file uploads (and animations, I guess...?)
+- [ ] Bump to 0.4.0
+- [ ] Rework drive views and drive URLs for class based views and post/get urls
 - [ ] Update README.md for professionalism
 - [ ] Release at 1.0.0
 

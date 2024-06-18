@@ -19,11 +19,19 @@
       <div class="row">
         <div class="col-sm-2">
           {% block sidebar %}
-            <ul class="sidebar-nav">
-              <li><a href="{% url 'drive' %}">Home</a></li>
-              <li><a href="">Upgrade</a></li>
-              <li><a href="">Log Out</a></li>
-            </ul>
+          <ul class="sidebar-nav">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'premium' %}">Upgrade</a></li>
+            <li>
+              <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none; border:none; padding:0; color:blue; text-decoration:underline; cursor:pointer;">
+                  Log Out
+                </button>
+              </form>
+            </li>
+          </ul>
             <ul>
               <li>
                 Quota: {{ used_quota }}/{{ user.quota_limit }}

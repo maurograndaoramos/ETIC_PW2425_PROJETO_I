@@ -135,4 +135,13 @@ LOGIN_REDIRECT_URL = "drive"
 # Logout redirect
 LOGOUT_REDIRECT_URL = "home"
 
+# Email settings
+DEFAULT_FROM_EMAIL = 'noreply@demomailtrap.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'live.smtp.mailtrap.io'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'api'
+EMAIL_HOST_PASSWORD = '3b0b273a95bd21e2be173060a369b521'
+
     

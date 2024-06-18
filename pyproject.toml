@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "edrive"
-version = "0.2.2"
+version = "0.3.0"
 description = "This is a gdrive inspired app, a project created for PROJETO I"
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
