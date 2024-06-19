@@ -1,4 +1,13 @@
-Aceder Login while Logged On
+Aceder Login while Logged On - Done
 Frontend de Reset Password no Frontoffice
-Procurar SubCode em Admin.py
-Create folder or add file redirects to drive.view
+Procurar SubCode em Admin.py - done
+Hash out folders and file urls - done
+Create folder or add file redirects to drive.view - done
+
+Implement user quota tiers in web app
+Finish the move functionality
+Create the breadcrumb logic
+Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
+
+Beautify it
+JS Animation it

@@ -2,16 +2,25 @@
 
 {% block content %}
 <div class="upload-section">
-  <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
-    {% csrf_token %}
-    <input type="file" name="file" class="form-control mb-2 mr-sm-2" required>
-    <button type="submit" class="btn btn-primary mb-2">Upload</button>
-  </form>
-
   <form action="{% url 'create_folder' %}" method="post" class="form-inline">
     {% csrf_token %}
-    <input type="text" name="folder_name" placeholder="New Folder Name" class="form-control mb-2 mr-sm-2">
+    <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+    <input type="text" name="folder_name" placeholder="New Folder Name" class="form-control mb-2 mr-sm-2" required>
     <button type="submit" class="btn btn-secondary mb-2">Create Folder</button>
+  </form>
+
+  <form action="{% url 'upload_folder' %}" method="post" enctype="multipart/form-data" class="form-inline">
+    {% csrf_token %}
+    <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+    <input type="file" name="folder" class="form-control mb-2 mr-sm-2" required webkitdirectory>
+    <button type="submit" class="btn btn-secondary mb-2">Upload Folder</button>
+  </form>
+
+  <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
+    {% csrf_token %}
+    <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+    <input type="file" name="file" class="form-control mb-2 mr-sm-2" required>
+    <button type="submit" class="btn btn-primary mb-2">Upload File</button>
   </form>
 </div>
 
@@ -23,23 +32,23 @@
       <div class="folder-item card">
         <div class="card-body">
           <a href="{{ folder.get_absolute_url }}" class="card-link">{{ folder.folder_name }}</a>
-          <a href="{% url 'download_folder' folder.folder_id %}" class="btn btn-sm btn-outline-info">DOWNLOAD</a>
-          <form action="{% url 'rename_folder' folder.folder_id %}" method="post" class="form-inline d-inline">
+          <a href="{% url 'download_folder' folder.hash %}" class="btn btn-sm btn-outline-info">DOWNLOAD</a>
+          <form action="{% url 'rename_folder' folder.hash %}" method="post" class="form-inline d-inline">
             {% csrf_token %}
             <input type="text" name="new_name" placeholder="New folder name" class="form-control form-control-sm mr-2" required>
             <button type="submit" class="btn btn-sm btn-outline-warning">Rename</button>
           </form>
-          <form action="{% url 'delete_folder' folder.folder_id %}" method="post" class="d-inline">
+          <form action="{% url 'delete_folder' folder.hash %}" method="post" class="d-inline">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this folder?');">DELETE</button>
           </form>
 
-          <form action="{% url 'move_folder' folder.folder_id %}" method="post" class="d-inline">
+          <form action="{% url 'move_folder' folder.hash %}" method="post" class="d-inline">
             {% csrf_token %}
             <select name="destination_folder" class="form-control form-control-sm mr-2">
               <option value="">Select destination folder</option>
               {% for f in folder_list %}
-              <option value="{{ f.folder_id }}">{{ f.folder_name }}</option>
+              <option value="{{ f.hash }}">{{ f.folder_name }}</option>
               {% endfor %}
             </select>
             <button type="submit" class="btn btn-sm btn-outline-primary">Move</button>
@@ -62,14 +71,14 @@
       <div class="file-item card">
         <div class="card-body">
           <a href="{{ file.get_absolute_url }}" class="card-link">{{ file.file_name }}</a>
-          <a href="{% url 'view_file' file.file_id %}" target="_blank" class="card-link">View</a>
-          <a href="{% url 'download_file' file.file_id %}" class="btn btn-sm btn-outline-info">DOWNLOAD</a>
-          <form action="{% url 'rename_file' file.file_id %}" method="post" class="form-inline d-inline">
+          <a href="{% url 'view_file' file.hash %}" target="_blank" class="card-link">View</a>
+          <a href="{% url 'download_file' file.hash %}" class="btn btn-sm btn-outline-info">DOWNLOAD</a>
+          <form action="{% url 'rename_file' file.hash %}" method="post" class="form-inline d-inline">
             {% csrf_token %}
             <input type="text" name="new_name" placeholder="Enter new name" class="form-control form-control-sm mr-2" required>
             <button type="submit" class="btn btn-sm btn-outline-warning">Rename</button>
           </form>
-          <form action="{% url 'delete_file' file.file_id %}" method="post" class="d-inline">
+          <form action="{% url 'delete_file' file.hash %}" method="post" class="d-inline">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this file?');">DELETE</button>
           </form>

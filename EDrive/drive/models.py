@@ -7,8 +7,6 @@ import hashlib
 
 # Create your models here.
 
-
-
 class File(models.Model):
     file_id = models.BigAutoField(primary_key=True)
     file_name = models.CharField(max_length=255)
@@ -59,6 +57,7 @@ class Folder(models.Model):
     folder_name = models.CharField(max_length=255)
     folder_parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='subfolders', help_text="Parent Folder")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    hash = models.CharField(max_length=64, editable=False, unique=True)
 
     class Meta:
         verbose_name = "Folder"
@@ -67,10 +66,18 @@ class Folder(models.Model):
         indexes = [
             models.Index(fields=["folder_name"]),
             models.Index(fields=["owner"]),
+            models.Index(fields=["hash"]),
         ]
 
-    def get_absolute_url(self):
-        return reverse('folder', args=[str(self.folder_id)])
-    
     def __str__(self):
         return self.folder_name
+
+    def get_absolute_url(self):
+        return reverse('folder', args=[self.hash])
+
+    def save(self, *args, **kwargs):
+        if not self.pk:  # if folder is being created
+            super().save(*args, **kwargs)  # Save first to get an ID
+            hash_input = f"{self.folder_id}{self.folder_name}{self.owner_id}"
+            self.hash = hashlib.sha256(hash_input.encode()).hexdigest()
+        super().save(*args, **kwargs)

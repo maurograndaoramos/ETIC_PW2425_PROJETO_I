@@ -25,7 +25,12 @@
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
               {% else %}
                 <li><a href="{% url 'premium' %}">Upgrade</a></li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                <li>
+                  <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Log Out</button>
+                  </form>
+                </li>
               {% endif %}
             </ul>
           {% endblock %}

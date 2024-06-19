@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.views import LoginView, LogoutView
-
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
 from .forms import SignUpForm
 
@@ -37,16 +37,25 @@ def signup(request):
     else:
         return render(request, 'auth/signup.html', {'form': form})
 
-class Login(LoginView):
-    template_name = "auth/login.html"
-    fields = "__all__"
-    redirect_authenticated_user = True
-    success_url = reverse_lazy("drive")
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('drive')
+        else:
+            print(form.errors)
+    else:
+        form = AuthenticationForm()
 
-    def get(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect(self.success_url)
-        return super().get(request, *args, **kwargs)
+    if request.user.is_authenticated:
+        return redirect('drive')
+    else:
+        return render(request, 'auth/login.html', {'form': form})      
 
 class Logout(LogoutView):
     next_page = reverse_lazy('home')
