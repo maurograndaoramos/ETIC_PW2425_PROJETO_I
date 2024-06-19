@@ -70,7 +70,7 @@
       {% for file in file_list %}
       <div class="file-item card">
         <div class="card-body">
-          <a href="{{ file.get_absolute_url }}" class="card-link">{{ file.file_name }}</a>
+          <a href="{{ file.get_absolute_url }}" class="card-link">{{ file.file_name}}</a>
           <a href="{% url 'view_file' file.hash %}" target="_blank" class="card-link">View</a>
           <a href="{% url 'download_file' file.hash %}" class="btn btn-sm btn-outline-info">DOWNLOAD</a>
           <form action="{% url 'rename_file' file.hash %}" method="post" class="form-inline d-inline">

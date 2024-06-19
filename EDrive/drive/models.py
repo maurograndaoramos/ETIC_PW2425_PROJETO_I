@@ -74,6 +74,18 @@ class Folder(models.Model):
 
     def get_absolute_url(self):
         return reverse('folder', args=[self.hash])
+    
+    def get_parent_folder(self):
+            array = []
+            current_folder = self.folder_parent
+
+            while current_folder is not None:
+                array.append(current_folder)
+                current_folder = current_folder.folder_parent
+
+            return array[::-1]
+            
+
 
     def save(self, *args, **kwargs):
         if not self.pk:  # if folder is being created

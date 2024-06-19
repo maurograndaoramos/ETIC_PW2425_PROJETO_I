@@ -4,9 +4,13 @@ Hash out folders and file urls - done
 Create folder or add file redirects to drive.view - done
 
 Frontend de Reset Password no Frontoffice
+Duplicação de nome - can´t open joe
+Middleware
+
+
 Implement user quota tiers in web app
 Finish the move functionality
-Create the breadcrumb logic
+Create the breadcrumb logic - done
 Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
 
 Beautify it

@@ -24,6 +24,18 @@
   </form>
 </div>
 
+<div class="folder-breadcrumb">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'drive' %}">Drive</a></li>
+      {% for parent in folder.get_parent_folder %}
+      <li class="breadcrumb-item"><a href="{{ parent.get_absolute_url }}">{{ parent.folder_name }}</a></li>
+      {% endfor %}
+      <li class="breadcrumb-item active" aria-current="page">{{ folder.folder_name }}</li>
+    </ol>
+  </nav>
+</div>
+
 <h1>{{ folder.folder_name }} content:</h1>
 
 <h2>Subfolders:</h2>

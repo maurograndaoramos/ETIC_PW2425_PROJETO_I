@@ -11,6 +11,9 @@ from hub.utilities import calculate_used_quota
 
 @login_required
 def drive_view(request):
+    if request.user.is_staff:
+        return redirect('admin:index')
+    
     current_user = request.user
 
     folder_list = Folder.objects.filter(owner=current_user, folder_parent__isnull=True)
@@ -28,11 +31,8 @@ def drive_view(request):
         "file_number": file_number,
         'used_quota': f"{used_quota_mbs} MB",
     }
-
-    if request.user.is_staff:
-        return redirect('admin:index')
-    else:
-        return render(request, 'drive.html', context=context)
+    
+    return render(request, 'drive.html', context=context)
     
 
 @login_required
@@ -56,6 +56,8 @@ def folder_view(request, hash):
         return redirect('admin:index')
     else:
         return render(request, 'folder_detail.html', context)
+    
+    
     
 
 # FILE MANAGEMENT VIEWS
@@ -160,15 +162,15 @@ def rename_folder(request, hash):
 
 @login_required
 @require_POST
-def move_folder(request, folder_id):
+def move_folder(request, hash, folder_parent):
     current_user = request.user
-    folder = get_object_or_404(Folder, pk=folder_id, owner=current_user)  # Use pk for clarity
-    new_folder_id = request.POST.get('folder_id')
-    new_folder = Folder.objects.get(pk=new_folder_id)
+    folder = get_object_or_404(Folder, hash=hash, owner=current_user)  # Use pk for clarity
+
+    new_folder = Folder.objects.get(hash=hash)
     
     folder.folder_parent = new_folder
     folder.save()
-    return redirect('folder', folder_id=new_folder_id)
+    return redirect('folder', hash=hash)
 
 
 # FILE UPLOAD AND FOLDER CREATION VIEWS
