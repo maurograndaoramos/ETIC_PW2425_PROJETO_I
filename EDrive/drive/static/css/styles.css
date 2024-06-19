@@ -102,6 +102,8 @@ main {
 /* Styling for upload and create folder section */
 .upload-section {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .form-inline {
@@ -128,6 +130,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 20px;
+  justify-items: start;
 }
 
 .folder-item,

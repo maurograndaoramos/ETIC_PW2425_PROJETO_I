@@ -1,9 +1,9 @@
 Aceder Login while Logged On - Done
-Frontend de Reset Password no Frontoffice
 Procurar SubCode em Admin.py - done
 Hash out folders and file urls - done
 Create folder or add file redirects to drive.view - done
 
+Frontend de Reset Password no Frontoffice
 Implement user quota tiers in web app
 Finish the move functionality
 Create the breadcrumb logic
