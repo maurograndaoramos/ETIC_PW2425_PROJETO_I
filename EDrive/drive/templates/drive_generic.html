@@ -27,7 +27,10 @@
             </li>
           </ul>
           <div class="quota">
-            Quota: {{ used_quota }}/{{ user.quota_limit }}
+            Quota: {{ used_quota }} / {{ user_quota }}
+          </div>
+          <div class="quota">
+            You have {{ user_quota_left }} left
           </div>
           {% endblock %}
         </nav>

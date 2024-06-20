@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LogoutView
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, SetPasswordForm
 from django.urls import reverse_lazy
 from .forms import SignUpForm
 
@@ -56,6 +56,23 @@ def login_view(request):
         return redirect('drive')
     else:
         return render(request, 'auth/login.html', {'form': form})      
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = SetPasswordForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('password_reset_complete')
+        else:
+            print(form.errors)
+
+    else:
+        form = SetPasswordForm(request.user)
+
+    if request.user.is_authenticated:
+        return redirect('drive')
+    else:
+        return render(request, 'auth/password_reset_form.html', {'form': form})
 
 class Logout(LogoutView):
     next_page = reverse_lazy('home')

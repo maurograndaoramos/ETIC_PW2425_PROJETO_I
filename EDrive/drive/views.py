@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-from hub.utilities import calculate_used_quota
+from hub.utilities import calculate_used_quota, has_enough_quota
 
 
 @login_required
@@ -22,7 +22,8 @@ def drive_view(request):
     file_number = File.objects.filter(owner=current_user).count()
 
     used_quota_mbs = calculate_used_quota(current_user)
-
+    user_quota = current_user.userprofile.quota
+    user_quota_left = user_quota - used_quota_mbs
 
     context = {
         'folder_list': folder_list,
@@ -30,6 +31,8 @@ def drive_view(request):
         "folder_number": folder_number,
         "file_number": file_number,
         'used_quota': f"{used_quota_mbs} MB",
+        'user_quota': f"{user_quota} MB",
+        'user_quota_left': f"{user_quota_left} MB",
     }
 
     return render(request, 'drive.html', context=context)
@@ -44,12 +47,14 @@ def folder_view(request, hash):
     files_in_folder = File.objects.filter(file_parent=folder, owner=current_user)
 
     used_quota_mbs = calculate_used_quota(current_user)
+    user_quota = current_user.userprofile.quota
 
     context = {
         'folder': folder,
         'subfolders': subfolders,
         'files': files_in_folder,
         'used_quota': f"{used_quota_mbs} MB",
+        'user_quota': f"{user_quota} MB",
     }
 
     return render(request, 'folder_detail.html', context)
@@ -148,11 +153,34 @@ def download_folder(request, hash):
 def delete_folder(request, hash):
     current_user = request.user
     folder = get_object_or_404(Folder, hash=hash, owner=current_user)
+    
+    files_in_folder = File.objects.filter(file_parent=folder, owner=current_user)
+    for file in files_in_folder:
+        file.file_path.delete()
+        file.delete()
+
+    subfolders = Folder.objects.filter(folder_parent=folder, owner=current_user)
+    for subfolder in subfolders:
+        delete_subfolders(subfolder)
+
     folder.delete()
+    
     if folder.folder_parent:
         return redirect('folder', hash=folder.folder_parent.hash)
     else: 
         return redirect('drive')
+
+def delete_subfolders(folder):
+    files_in_folder = File.objects.filter(file_parent=folder, owner=folder.owner)
+    for file in files_in_folder:
+        file.file_path.delete()
+        file.delete()
+    
+    subfolders = Folder.objects.filter(folder_parent=folder, owner=folder.owner)
+    for subfolder in subfolders:
+        delete_subfolders(subfolder)
+    
+    folder.delete()
 
 @login_required
 @require_POST
@@ -181,15 +209,22 @@ def rename_folder(request, hash):
 
 @login_required
 @require_POST
-def move_folder(request, folder_id):
+def move_folder(request, hash):
     current_user = request.user
-    folder = get_object_or_404(Folder, pk=folder_id, owner=current_user) 
-    new_folder_id = request.POST.get('folder_id')
-    new_folder = Folder.objects.get(pk=new_folder_id)
+    folder = get_object_or_404(Folder, hash=hash, owner=current_user)
+    new_folder_hash = request.POST.get('destination_folder')
+
+    if new_folder_hash and new_folder_hash != folder.hash:
+        new_folder = get_object_or_404(Folder, hash=new_folder_hash, owner=current_user)
+        folder.folder_parent = new_folder
+        folder.save()
+    else:
+        messages.error(request, "Invalid destination folder.")
     
-    folder.folder_parent = new_folder
-    folder.save()
-    return redirect('folder', folder_id=new_folder_id)
+    if folder.folder_parent:
+        return redirect('folder', hash=folder.folder_parent.hash)
+    else:
+        return redirect('drive')
 
 
 # FILE UPLOAD AND FOLDER CREATION VIEWS
@@ -203,11 +238,18 @@ def upload_file(request):
 
         if file_parent_hash:
             file_parent = Folder.objects.get(hash=file_parent_hash)
-
-
+            
         original_name, ext = os.path.splitext(file.name)
         file_name = file.name
         file_size = file.size
+
+        if not has_enough_quota(current_user, file_size):
+            messages.error(request, "You do not have enough quota to upload this file.")
+            if file_parent:
+                return redirect('folder', file_parent.hash)
+            else:
+                return redirect('drive')
+
         file_timestamp = timezone.now()
         counter = 1
 
@@ -218,17 +260,17 @@ def upload_file(request):
         if counter > 1:
             messages.error(request, "A file with that name already exists. Renamed to " + file_name + ".")
 
-        file_path = default_storage.save(file_name, ContentFile(file.read()))
+        temp_path = default_storage.save(file_name, ContentFile(file.read()))
 
         new_file = File(
-            file_path=file_path,
+            file_path=temp_path,
             file_name=file_name,
             file_size=file_size,
             file_timestamp=file_timestamp,
             owner=current_user,
             file_parent=file_parent
         )
-        new_file.save()
+        new_file.save() 
 
         if file_parent:
             return redirect('folder', file_parent.hash)

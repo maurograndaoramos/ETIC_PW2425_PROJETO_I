@@ -4,6 +4,8 @@ from django.urls import reverse
 
 import os
 import hashlib
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 
 # Create your models here.
 
@@ -34,20 +36,27 @@ class File(models.Model):
         return self.file_path.url
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if not self.pk:  # Only generate the hash for new files
             if self.file_path:
                 self.file_size = self.file_path.size
                 self.file_name = self.file_path.name
 
-            original_full_path = self.file_path.path
+                original_full_path = self.file_path.path
+                original_name = os.path.basename(original_full_path)
+                hash_input = f"{self.file_id}{self.file_timestamp}{self.file_name}"
+                self.hash = hashlib.sha256(hash_input.encode()).hexdigest()
+                file_extension = os.path.splitext(original_name)[1]
+                new_filename = f"{self.hash}{file_extension}"
 
-            original_name = os.path.basename(original_full_path)
-            hash_input = f"{self.file_id}{self.file_timestamp}{self.file_name}"
-            self.hash = hashlib.sha256(hash_input.encode()).hexdigest()
-            file_extension = os.path.splitext(original_name)[1]
-            new_filename = f"{self.hash}{file_extension}"
+                # Read the file content
+                file_content = self.file_path.read()
+                # Delete the original file
+                self.file_path.delete(save=False)
 
-            self.file_path.name = new_filename
+                # Save the file with the new hashed name
+                new_file_path = os.path.join("drive/uploads/", new_filename)
+                default_storage.save(new_file_path, ContentFile(file_content))
+                self.file_path.name = new_file_path
 
         super().save(*args, **kwargs)
 

@@ -6,18 +6,22 @@ Create the breadcrumb logic - done
 Duplicação de nome - can´t open joe - done
 Middleware - Done
 
-FIX BUG WITH UPLOAD FUCKING UP DIRECTORY
+FIX BUG WITH UPLOAD FUCKING UP DIRECTORY - DONE
+Finish the move functionality - Done
+Implement user quota tiers in web app - Done
 
-Frontend de Reset Password no Frontoffice
+Frontend de Reset Password no Frontoffice - Done, somewhat. Mail is not sending. Could be mailtrap, could be the form? May need to turn into a function.............
+
+NoReverseMatch at /drive/upload_folder/ - BUG in Mass upload
+
+OPTIONAL:
 Fix Upload Folder functionality (It's just bulk uploading right now)
-
-
-Implement user quota tiers in web app
-Finish the move functionality
 Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
+
 
 Beautify it
 JS Animation it
 
+MASS SELECT IN JS and... Mass Delete?!?!?!
 Think about a drag and drop in JS........
 .... B L E H
