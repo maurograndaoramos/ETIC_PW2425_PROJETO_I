@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.db.models import Sum
 from drive.models import File
 
@@ -22,3 +23,13 @@ def has_enough_quota(user, file_size):
 
 def has_permission(user, file):
     return user == file.owner
+
+
+def staff_redirect_middleware(get_response):
+    def middleware(request):
+        if request.user.is_authenticated and request.user.is_staff and not request.path.startswith('/admin/'):
+            return redirect('admin:index')
+        response = get_response(request)
+        return response
+
+    return middleware

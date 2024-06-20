@@ -2,16 +2,22 @@ Aceder Login while Logged On - Done
 Procurar SubCode em Admin.py - done
 Hash out folders and file urls - done
 Create folder or add file redirects to drive.view - done
+Create the breadcrumb logic - done
+Duplicação de nome - can´t open joe - done
+Middleware - Done
+
+FIX BUG WITH UPLOAD FUCKING UP DIRECTORY
 
 Frontend de Reset Password no Frontoffice
-Duplicação de nome - can´t open joe
-Middleware
+Fix Upload Folder functionality (It's just bulk uploading right now)
 
 
 Implement user quota tiers in web app
 Finish the move functionality
-Create the breadcrumb logic - done
 Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
 
 Beautify it
 JS Animation it
+
+Think about a drag and drop in JS........
+.... B L E H

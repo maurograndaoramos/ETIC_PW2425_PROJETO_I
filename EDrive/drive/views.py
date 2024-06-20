@@ -6,14 +6,14 @@ from drive.models import File, Folder
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.utils import timezone
+from django.contrib import messages
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from hub.utilities import calculate_used_quota
 
 
 @login_required
 def drive_view(request):
-    if request.user.is_staff:
-        return redirect('admin:index')
-    
     current_user = request.user
 
     folder_list = Folder.objects.filter(owner=current_user, folder_parent__isnull=True)
@@ -31,7 +31,7 @@ def drive_view(request):
         "file_number": file_number,
         'used_quota': f"{used_quota_mbs} MB",
     }
-    
+
     return render(request, 'drive.html', context=context)
     
 
@@ -52,12 +52,7 @@ def folder_view(request, hash):
         'used_quota': f"{used_quota_mbs} MB",
     }
 
-    if request.user.is_staff:
-        return redirect('admin:index')
-    else:
-        return render(request, 'folder_detail.html', context)
-    
-    
+    return render(request, 'folder_detail.html', context)
     
 
 # FILE MANAGEMENT VIEWS
@@ -95,11 +90,23 @@ def rename_file(request, hash):
     file = get_object_or_404(File, hash=hash, owner=current_user)
     new_name = request.POST.get('new_name')
     _, ext = os.path.splitext(file.file_name)
-    file.file_name = new_name + ext
+
+    counter = 1
+    final_name = f"{new_name}{ext}"
+
+    while File.objects.filter(file_name=final_name, file_parent=file.file_parent, owner=current_user).exists():
+        counter += 1
+        final_name = f"{new_name} ({counter}){ext}"
+
+    if counter > 1:
+        messages.error(request, "A file with that name already exists. Renamed to " + final_name + ".")
+
+    file.file_name = final_name
     file.save()
+    
     if file.file_parent:
         return redirect('folder', hash=file.file_parent.hash)
-    else: 
+    else:
         return redirect('drive')
 
 @login_required
@@ -153,29 +160,42 @@ def rename_folder(request, hash):
     current_user = request.user
     folder = get_object_or_404(Folder, hash=hash, owner=current_user)
     new_name = request.POST.get('new_name')
+
+    original_name = new_name
+    counter = 1
+
+    while Folder.objects.filter(folder_name=new_name, owner=current_user, folder_parent=folder.folder_parent).exists():
+        counter += 1
+        new_name = f"{original_name} ({counter})"
+    
+    if counter > 1:
+        messages.error(request, "A folder with that name already exists. Renamed to " + new_name + ".")
+
     folder.folder_name = new_name
     folder.save()
+    
     if folder.folder_parent:
         return redirect('folder', hash=folder.folder_parent.hash)
-    else: 
+    else:
         return redirect('drive')
 
 @login_required
 @require_POST
-def move_folder(request, hash, folder_parent):
+def move_folder(request, folder_id):
     current_user = request.user
-    folder = get_object_or_404(Folder, hash=hash, owner=current_user)  # Use pk for clarity
-
-    new_folder = Folder.objects.get(hash=hash)
+    folder = get_object_or_404(Folder, pk=folder_id, owner=current_user) 
+    new_folder_id = request.POST.get('folder_id')
+    new_folder = Folder.objects.get(pk=new_folder_id)
     
     folder.folder_parent = new_folder
     folder.save()
-    return redirect('folder', hash=hash)
+    return redirect('folder', folder_id=new_folder_id)
 
 
 # FILE UPLOAD AND FOLDER CREATION VIEWS
 @login_required
 def upload_file(request):
+    current_user = request.user
     if request.method == 'POST':
         file = request.FILES['file']
         file_parent_hash = request.POST.get('folder_id', None)
@@ -183,15 +203,35 @@ def upload_file(request):
 
         if file_parent_hash:
             file_parent = Folder.objects.get(hash=file_parent_hash)
-        
-        new_file = File(file_path=file, owner=request.user, file_parent=file_parent)
-        new_file.file_name = file.name
-        new_file.file_size = file.size
-        new_file.file_timestamp = timezone.now()
+
+
+        original_name, ext = os.path.splitext(file.name)
+        file_name = file.name
+        file_size = file.size
+        file_timestamp = timezone.now()
+        counter = 1
+
+        while File.objects.filter(file_name=file_name, file_parent=file_parent, owner=current_user).exists():
+            counter += 1
+            file_name = f"{original_name} ({counter}){ext}"
+
+        if counter > 1:
+            messages.error(request, "A file with that name already exists. Renamed to " + file_name + ".")
+
+        file_path = default_storage.save(file_name, ContentFile(file.read()))
+
+        new_file = File(
+            file_path=file_path,
+            file_name=file_name,
+            file_size=file_size,
+            file_timestamp=file_timestamp,
+            owner=current_user,
+            file_parent=file_parent
+        )
         new_file.save()
 
         if file_parent:
-            return redirect('folder', file_parent_hash)
+            return redirect('folder', file_parent.hash)
         else:
             return redirect('drive')
     else:
@@ -223,6 +263,7 @@ def upload_folder(request):
 
 @login_required
 def create_folder(request):
+    current_user = request.user
     if request.method == 'POST':
         folder_name = request.POST.get('folder_name')
         parent_folder_hash = request.POST.get('folder_id', None)
@@ -231,11 +272,25 @@ def create_folder(request):
         if parent_folder_hash:
             folder_parent = Folder.objects.get(hash=parent_folder_hash)
 
-        new_folder = Folder(folder_name=folder_name, owner=request.user, folder_parent=folder_parent)
+        original_name = folder_name
+        counter = 1
+
+        while Folder.objects.filter(folder_name=folder_name, folder_parent=folder_parent, owner=current_user).exists():
+                counter += 1
+                folder_name = f"{original_name} ({counter})"
+                
+        if counter > 1:
+            messages.error(request, "A file with that name already exists. Renamed to " + folder_name + ".")
+
+        new_folder = Folder(
+            folder_name=folder_name, 
+            owner=current_user, 
+            folder_parent=folder_parent
+        )
         new_folder.save()
 
         if folder_parent:
-            return redirect('folder', parent_folder_hash)  
+            return redirect('folder', folder_parent.hash)  
         else:
             return redirect('drive')
     else:
