@@ -17,7 +17,9 @@ Try to create a tree logic (?) to show on an additional navbar in folder_detail.
 Large bulk upload stops renaming files and just hashes name 
     Large bulk uploads also doesn't import folders at all so it just dumps everything as hash since there's no actual folder that each file belongs to
         IF NOT DONE, SCRAP THIS SHITE
-        
+
+Download de Folder not creating subfolders and adding it into the content
+
 Implementar a lógica do folder name no move_folder
 
 OPTIONAL:

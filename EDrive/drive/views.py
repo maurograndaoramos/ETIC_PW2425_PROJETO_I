@@ -220,15 +220,30 @@ def move_folder(request, hash):
 
     if new_folder_hash and new_folder_hash != folder.hash:
         new_folder = get_object_or_404(Folder, hash=new_folder_hash, owner=current_user)
+        
+        original_name = folder.folder_name
+        new_name = original_name
+        counter = 1
+        
+        while Folder.objects.filter(folder_name=new_name, folder_parent=new_folder, owner=current_user).exists():
+            counter += 1
+            new_name = f"{original_name} ({counter})"
+        
+        if counter > 1:
+            messages.error(request, "A folder with that name already exists in the destination. Renamed to " + new_name + ".")
+            folder.folder_name = new_name
+        
         folder.folder_parent = new_folder
         folder.save()
     else:
         messages.error(request, "Invalid destination folder.")
-    
+
     if folder.folder_parent:
         return redirect('folder', hash=folder.folder_parent.hash)
     else:
         return redirect('drive')
+    
+    # return redirect('folder', hash=folder.hash if folder.folder_parent else 'drive')
 
 
 # FILE UPLOAD AND FOLDER CREATION VIEWS
