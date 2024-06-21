@@ -9,15 +9,19 @@ Middleware - Done
 FIX BUG WITH UPLOAD FUCKING UP DIRECTORY - DONE
 Finish the move functionality - Done
 Implement user quota tiers in web app - Done
+Frontend de Reset Password no Frontoffice - Done!!!!
+NoReverseMatch at /drive/upload_folder/ - BUG in Mass upload - Done!
 
-Frontend de Reset Password no Frontoffice - Done, somewhat. Mail is not sending. Could be mailtrap, could be the form? May need to turn into a function.............
+Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
 
-NoReverseMatch at /drive/upload_folder/ - BUG in Mass upload
+Large bulk upload stops renaming files and just hashes name 
+    Large bulk uploads also doesn't import folders at all so it just dumps everything as hash since there's no actual folder that each file belongs to
+        IF NOT DONE, SCRAP THIS SHITE
+        
+Implementar a lógica do folder name no move_folder
 
 OPTIONAL:
 Fix Upload Folder functionality (It's just bulk uploading right now)
-Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
-
 
 Beautify it
 JS Animation it

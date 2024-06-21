@@ -74,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "hub.wsgi.application"
 
+DATA_UPLOAD_MAX_NUMBER_FILES = 9999
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -139,7 +141,7 @@ LOGOUT_REDIRECT_URL = "home"
 # Email settings
 DEFAULT_FROM_EMAIL = 'noreply@demomailtrap.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST = 'live.smtp.mailtrap.io'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'api'

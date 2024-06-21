@@ -17,6 +17,7 @@ def drive_view(request):
     current_user = request.user
 
     folder_list = Folder.objects.filter(owner=current_user, folder_parent__isnull=True)
+    subfolder_list = Folder.objects.filter(owner=current_user, folder_parent=True)
     file_list = File.objects.filter(owner=current_user, file_parent__isnull=True)
     folder_number = Folder.objects.filter(owner=current_user).count()
     file_number = File.objects.filter(owner=current_user).count()
@@ -27,6 +28,7 @@ def drive_view(request):
 
     context = {
         'folder_list': folder_list,
+        'subfolder_list': subfolder_list,
         'file_list': file_list,
         "folder_number": folder_number,
         "file_number": file_number,
@@ -48,6 +50,7 @@ def folder_view(request, hash):
 
     used_quota_mbs = calculate_used_quota(current_user)
     user_quota = current_user.userprofile.quota
+    user_quota_left = user_quota - used_quota_mbs
 
     context = {
         'folder': folder,
@@ -55,6 +58,7 @@ def folder_view(request, hash):
         'files': files_in_folder,
         'used_quota': f"{used_quota_mbs} MB",
         'user_quota': f"{user_quota} MB",
+        'user_quota_left': f"{user_quota_left} MB",
     }
 
     return render(request, 'folder_detail.html', context)
@@ -251,6 +255,7 @@ def upload_file(request):
                 return redirect('drive')
 
         file_timestamp = timezone.now()
+
         counter = 1
 
         while File.objects.filter(file_name=file_name, file_parent=file_parent, owner=current_user).exists():
@@ -297,7 +302,7 @@ def upload_folder(request):
             new_file.save()
 
         if folder_parent:
-            return redirect('folder', folder_hash=folder_parent_hash)
+            return redirect('folder', folder_parent.hash)
         else:
             return redirect('drive')
     else:

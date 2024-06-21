@@ -32,6 +32,9 @@
           <div class="quota">
             You have {{ user_quota_left }} left
           </div>
+
+          TREE WILL BE HERE
+
           {% endblock %}
         </nav>
         <main class="col-sm-10">
@@ -48,7 +51,7 @@
               {% csrf_token %}
               <input type="hidden" name="folder_id" value="{{ folder.hash }}">
               <input type="file" name="folder" class="form-control mb-2 mr-sm-2" required webkitdirectory>
-              <button type="submit" class="btn btn-secondary mb-2">Upload Folder</button>
+              <button type="submit" class="btn btn-secondary mb-2">Bulk Upload</button>
             </form>
           
             <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
