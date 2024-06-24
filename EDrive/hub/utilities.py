@@ -11,7 +11,8 @@ def calculate_used_quota(user):
 def calculate_available_quota(user):
     user_profile = UserProfile.objects.get(user=user)
     available_quota = user_profile.quota - calculate_used_quota(user)
-    return available_quota
+
+    return round(available_quota, 2)
 
 def has_enough_quota(user, file_size):
     available_quota_mb = calculate_available_quota(user)

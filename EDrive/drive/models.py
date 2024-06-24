@@ -18,6 +18,7 @@ class File(models.Model):
     file_timestamp = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     hash = models.CharField(max_length=64, editable=False, unique=True)
+    favorite = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "File"
@@ -67,6 +68,7 @@ class Folder(models.Model):
     folder_parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='subfolders', help_text="Parent Folder")
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     hash = models.CharField(max_length=64, editable=False, unique=True)
+    favorite = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Folder"

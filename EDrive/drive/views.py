@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
-from hub.utilities import calculate_used_quota, has_enough_quota
+from hub.utilities import calculate_used_quota, calculate_available_quota, has_enough_quota
 
 
 @login_required
@@ -24,7 +24,8 @@ def drive_view(request):
 
     used_quota_mbs = calculate_used_quota(current_user)
     user_quota = current_user.userprofile.quota
-    user_quota_left = user_quota - used_quota_mbs
+    user_quota_left = calculate_available_quota(current_user)
+    quota_used_percentage = int(round((used_quota_mbs / user_quota) * 100, 0))
 
     context = {
         'folder_list': folder_list,
@@ -32,9 +33,10 @@ def drive_view(request):
         'file_list': file_list,
         "folder_number": folder_number,
         "file_number": file_number,
-        'used_quota': f"{used_quota_mbs} MB",
-        'user_quota': f"{user_quota} MB",
-        'user_quota_left': f"{user_quota_left} MB",
+        'used_quota': f"{used_quota_mbs}",
+        'user_quota': f"{user_quota}",
+        'user_quota_left': f"{user_quota_left}",
+        'quota_used_percentage': f"{quota_used_percentage}",
     }
 
     return render(request, 'drive.html', context=context)
@@ -45,20 +47,22 @@ def folder_view(request, hash):
     current_user = request.user
 
     folder = get_object_or_404(Folder, hash=hash, owner=current_user)
-    subfolders = Folder.objects.filter(folder_parent=folder, owner=current_user).order_by('folder_name')
-    files_in_folder = File.objects.filter(file_parent=folder, owner=current_user)
+    folder_list = Folder.objects.filter(folder_parent=folder, owner=current_user).order_by('folder_name')
+    file_list = File.objects.filter(file_parent=folder, owner=current_user)
 
     used_quota_mbs = calculate_used_quota(current_user)
     user_quota = current_user.userprofile.quota
-    user_quota_left = user_quota - used_quota_mbs
+    user_quota_left = calculate_available_quota(current_user)
+    quota_used_percentage = int(round((used_quota_mbs / user_quota) * 100, 0))
 
     context = {
         'folder': folder,
-        'subfolders': subfolders,
-        'files': files_in_folder,
-        'used_quota': f"{used_quota_mbs} MB",
-        'user_quota': f"{user_quota} MB",
-        'user_quota_left': f"{user_quota_left} MB",
+        'folder_list': folder_list,
+        'file_list': file_list,
+        'used_quota': f"{used_quota_mbs}",
+        'user_quota': f"{user_quota}",
+        'user_quota_left': f"{user_quota_left}",
+        'quota_used_percentage': f"{quota_used_percentage}",
     }
 
     return render(request, 'folder_detail.html', context)

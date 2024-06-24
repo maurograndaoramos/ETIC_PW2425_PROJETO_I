@@ -1,80 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {% block title %}
-      <title>EDrive</title>
-    {% endblock %}
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-sm-2 sidebar">
-          {% block sidebar %}
-          <ul class="sidebar-nav">
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'premium' %}">Upgrade</a></li>
-            <li>
-              <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit">Log Out</button>
-              </form>
-            </li>
-          </ul>
-          <div class="quota">
-            Quota: {{ used_quota }} / {{ user_quota }}
-          </div>
-          <div class="quota">
-            You have {{ user_quota_left }} left
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDrive</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="nav-right">
+        <label for="menu-toggle" class="menu-toggle-label"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-          TREE WILL BE HERE
-
-          {% endblock %}
-        </nav>
-        <main class="col-sm-10">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
           
-          <div class="upload-section">
-            <form action="{% url 'create_folder' %}" method="post" class="form-inline">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="text" name="folder_name" placeholder="New Folder Name" class="form-control mb-2 mr-sm-2" required>
-              <button type="submit" class="btn btn-secondary mb-2">Create Folder</button>
-            </form>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
           
-            <form action="{% url 'upload_folder' %}" method="post" enctype="multipart/form-data" class="form-inline">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="file" name="folder" class="form-control mb-2 mr-sm-2" required webkitdirectory>
-              <button type="submit" class="btn btn-secondary mb-2">Bulk Upload</button>
-            </form>
+          <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447C2 4.92893 2 7.28595 2 12C2 16.714 2 19.0711 3.46447 20.5355ZM18.75 16C18.75 16.4142 18.4142 16.75 18 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H18C18.4142 15.25 18.75 15.5858 18.75 16ZM18 12.75C18.4142 12.75 18.75 12.4142 18.75 12C18.75 11.5858 18.4142 11.25 18 11.25H6C5.58579 11.25 5.25 11.5858 5.25 12C5.25 12.4142 5.58579 12.75 6 12.75H18ZM18.75 8C18.75 8.41421 18.4142 8.75 18 8.75H6C5.58579 8.75 5.25 8.41421 5.25 8C5.25 7.58579 5.58579 7.25 6 7.25H18C18.4142 7.25 18.75 7.58579 18.75 8Z" fill="#ffffff"/> </g>
           
-            <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" class="form-inline">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="file" name="file" class="form-control mb-2 mr-sm-2" required>
-              <button type="submit" class="btn btn-primary mb-2">Upload File</button>
-            </form>
-          </div>
-          
-          {% if messages %}
-          <div class="messages">
-              {% for message in messages %}
-              <div class="{{ message.tags }}">
-                  {{ message }}
-              </div>
-              {% endfor %}
-          </div>
-          {% endif %}
-
-          {% block content %}{% endblock %}
-        </main>
+          </svg></label>
+        <h1 class="logo"><a href="{% url 'home' %}">EDrive</a></h1>
       </div>
+      <div class="nav-left">
+        <h1 class="user-name">{{ user }}</h1>
+        <form class="log-out-form" action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="logout-button" onclick="return confirm('Are you sure you want to log out?');"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            
+            <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M16.125 12C16.125 11.5858 15.7892 11.25 15.375 11.25L4.40244 11.25L6.36309 9.56944C6.67759 9.29988 6.71401 8.8264 6.44444 8.51191C6.17488 8.19741 5.7014 8.16099 5.38691 8.43056L1.88691 11.4306C1.72067 11.573 1.625 11.7811 1.625 12C1.625 12.2189 1.72067 12.427 1.88691 12.5694L5.38691 15.5694C5.7014 15.839 6.17488 15.8026 6.44444 15.4881C6.71401 15.1736 6.67759 14.7001 6.36309 14.4306L4.40244 12.75L15.375 12.75C15.7892 12.75 16.125 12.4142 16.125 12Z" fill="#ffffff"/> <path d="M9.375 8C9.375 8.70219 9.375 9.05329 9.54351 9.3055C9.61648 9.41471 9.71025 9.50848 9.81946 9.58145C10.0717 9.74996 10.4228 9.74996 11.125 9.74996L15.375 9.74996C16.6176 9.74996 17.625 10.7573 17.625 12C17.625 13.2426 16.6176 14.25 15.375 14.25L11.125 14.25C10.4228 14.25 10.0716 14.25 9.8194 14.4185C9.71023 14.4915 9.6165 14.5852 9.54355 14.6944C9.375 14.9466 9.375 15.2977 9.375 16C9.375 18.8284 9.375 20.2426 10.2537 21.1213C11.1324 22 12.5464 22 15.3748 22L16.3748 22C19.2032 22 20.6174 22 21.4961 21.1213C22.3748 20.2426 22.3748 18.8284 22.3748 16L22.3748 8C22.3748 5.17158 22.3748 3.75736 21.4961 2.87868C20.6174 2 19.2032 2 16.3748 2L15.3748 2C12.5464 2 11.1324 2 10.2537 2.87868C9.375 3.75736 9.375 5.17157 9.375 8Z" fill="#ffffff"/> </g>
+            
+            </svg></button>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <input type="checkbox" id="menu-toggle" style="display:none;">
+
+  <aside class="sidebar-wrapper">
+    <div id="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'premium' %}">Upgrade</a></li>
+      </ul>
+      <p class="quota">
+        {{ used_quota }} of {{ user_quota }} MB / {{ user_quota_left }} MB left
+      </p>
     </div>
-  </body>
-</html>
+  </aside>
+
+  <main>
+    <section class="top-bar-wrapper">
+      <nav class="secondary-nav-wrapper">
+        <div id="upload-buttons-section" class="upload-buttons-section">
+          <button class="upload-button-btn" id="create-folder-btn" type="button" class="menu-toggle-label">
+            <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.06935 5.00839C2 5.37595 2 5.81722 2 6.69975V13.75C2 17.5212 2 19.4069 3.17157 20.5784C4.34315 21.75 6.22876 21.75 10 21.75H14C17.7712 21.75 19.6569 21.75 20.8284 20.5784C22 19.4069 22 17.5212 22 13.75V11.5479C22 8.91554 22 7.59935 21.2305 6.74383C21.1598 6.66514 21.0849 6.59024 21.0062 6.51946C20.1506 5.75 18.8345 5.75 16.2021 5.75H15.8284C14.6747 5.75 14.0979 5.75 13.5604 5.59678C13.2651 5.5126 12.9804 5.39471 12.7121 5.24543C12.2237 4.97367 11.8158 4.56578 11 3.75L10.4497 3.19975C10.1763 2.92633 10.0396 2.78961 9.89594 2.67051C9.27652 2.15704 8.51665 1.84229 7.71557 1.76738C7.52976 1.75 7.33642 1.75 6.94975 1.75C6.06722 1.75 5.62595 1.75 5.25839 1.81935C3.64031 2.12464 2.37464 3.39031 2.06935 5.00839ZM12 11C12.4142 11 12.75 11.3358 12.75 11.75V13H14C14.4142 13 14.75 13.3358 14.75 13.75C14.75 14.1642 14.4142 14.5 14 14.5H12.75V15.75C12.75 16.1642 12.4142 16.5 12 16.5C11.5858 16.5 11.25 16.1642 11.25 15.75V14.5H10C9.58579 14.5 9.25 14.1642 9.25 13.75C9.25 13.3358 9.58579 13 10 13H11.25V11.75C11.25 11.3358 11.5858 11 12 11Z" fill="#1C274C"/>
+              </svg>
+          </button>
+          <button class="upload-button-btn"  id="upload-folder-btn" type="button" class="menu-toggle-label"><svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.46447 3.46447C2 4.92893 2 7.28595 2 12C2 16.714 2 19.0711 3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447ZM9.25 17C9.25 17.4142 8.91421 17.75 8.5 17.75C8.08579 17.75 7.75 17.4142 7.75 17V12.0715L6.57617 13.4801C6.31099 13.7983 5.83807 13.8413 5.51986 13.5762C5.20165 13.311 5.15866 12.8381 5.42383 12.5199L7.92383 9.51986C8.06633 9.34887 8.27742 9.25 8.5 9.25C8.72259 9.25 8.93367 9.34887 9.07617 9.51986L11.5762 12.5199C11.8413 12.8381 11.7983 13.311 11.4801 13.5762C11.1619 13.8413 10.689 13.7983 10.4238 13.4801L9.25 12.0715V17ZM15.5 17.75C15.9142 17.75 16.25 17.4142 16.25 17V12.0715L17.4238 13.4801C17.689 13.7983 18.1619 13.8413 18.4801 13.5762C18.7983 13.311 18.8413 12.8381 18.5762 12.5199L16.0762 9.51986C15.9337 9.34887 15.7226 9.25 15.5 9.25C15.2774 9.25 15.0663 9.34887 14.9238 9.51986L12.4238 12.5199C12.1587 12.8381 12.2017 13.311 12.5199 13.5762C12.8381 13.8413 13.311 13.7983 13.5762 13.4801L14.75 12.0715V17C14.75 17.4142 15.0858 17.75 15.5 17.75ZM6 7.75C5.58579 7.75 5.25 7.41421 5.25 7C5.25 6.58579 5.58579 6.25 6 6.25H18C18.4142 6.25 18.75 6.58579 18.75 7C18.75 7.41421 18.4142 7.75 18 7.75H6Z" fill="#1C274C"/>
+            </svg></button>
+          <button class="upload-button-btn"  id="upload-file-btn" type="button" class="menu-toggle-label">
+            <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12ZM12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11.8107L14.4697 13.5303C14.7626 13.8232 15.2374 13.8232 15.5303 13.5303C15.8232 13.2374 15.8232 12.7626 15.5303 12.4697L12.5303 9.46967C12.3897 9.32902 12.1989 9.25 12 9.25C11.8011 9.25 11.6103 9.32902 11.4697 9.46967L8.46967 12.4697C8.17678 12.7626 8.17678 13.2374 8.46967 13.5303C8.76256 13.8232 9.23744 13.8232 9.53033 13.5303L11.25 11.8107V17C11.25 17.4142 11.5858 17.75 12 17.75ZM8 7.75C7.58579 7.75 7.25 7.41421 7.25 7C7.25 6.58579 7.58579 6.25 8 6.25H16C16.4142 6.25 16.75 6.58579 16.75 7C16.75 7.41421 16.4142 7.75 16 7.75H8Z" fill="#1C274C"/>
+            </svg></button>
+            {% block breadcrumb %}
+            {% endblock %}
+        </div>
+    
+
+        <div id="create-folder-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close-create-folder">&times;</span>
+            <form id="create-folder-form" class="upload-form" action="{% url 'create_folder' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+              <input type="text" name="folder_name" placeholder="New Folder Name" required>
+              <button type="submit">Create Folder</button>
+            </form>
+          </div>
+        </div>
+        
+        <div id="upload-folder-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close-upload-folder">&times;</span>
+            <form id="upload-folder-form" class="upload-form" action="{% url 'upload_folder' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+              <input type="file" name="folder" required webkitdirectory>
+              <button type="submit">Upload Folder</button>
+            </form>
+          </div>
+        </div>
+        
+        <div id="upload-file-modal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="close-upload-file">&times;</span>
+            <form id="upload-file-form" class="upload-form" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
+              <input type="file" name="file" required>
+              <button type="submit">Upload File</button>
+            </form>
+          </div>
+
+        </div>
+
+
+      </nav>
+    </section>
+
+    <section class="content-wrapper">
+      {% block content %}
+      {% endblock %}
+    </section>
+  </main>
+
+  <footer>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="progress-bar-container">
+      <progress class="progress-bar" value="{{ used_quota }}" max="{{ user_quota }}"></progress>
+      <span class="quota-text">{{ quota_used_percentage }}% full</span>
+    </div>
+  </footer>
