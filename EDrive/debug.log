@@ -1,0 +1,1664 @@
+Watching for file changes with StatReloader
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21218
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/delete-file/afaecacd7ab00cb3ac3efed37a7cff705dd973516cfdff47a6aaa6317655c1ab/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 22450
+"POST /drive/delete-file/3a1bfb6969742f2400daceae24b23d0f527124801ec68234837f292fbd81ff46/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15218
+Number of files received: 2
+File name: 1688586088985192.png
+File name: 1688586088985192.png
+Starting to process 2 files
+Processing file path: 1688586088985192.png
+Processing file path: 1688586088985192.png
+Folder creation complete. Created 0 folders.
+Saving file: 1688586088985192.png in folder: yrdy
+Saved file: 1688586088985192.png
+Saving file: 1688586088985192.png in folder: yrdy
+Saved file: 1688586088985192.png
+Upload complete. Uploaded 2 files, created 0 folders, renamed 0 files.
+Uploaded 2 files, created 0 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 29797
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/delete-file/32a773f8ed38b6aa0379103d7be95030d3b96f159c716b348ab949dd3125a9ee/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 22450
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"POST /drive/delete-file/b8eb5435df20a9fefb7c3c9629f5853d47fb6916459bbe258234db37c16fd241/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15218
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/js/main.js HTTP/1.1" 304 0
+Number of files received: 2
+Number of file paths received: 2
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+File name: 1688586088985192.png, Path: test/test/1688586088985192.png
+Error during upload process
+Traceback (most recent call last):
+  File "/app/EDrive/drive/views.py", line 348, in upload_folder
+    uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/EDrive/drive/views.py", line 371, in process_uploads
+    logger.debug(f"Starting to process {len(files)} files")
+                                            ^^^^^
+NameError: name 'files' is not defined. Did you mean: 'File'?
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15426
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 200 11158
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+Number of files received: 2
+Number of file paths received: 2
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+File name: 1688586088985192.png, Path: test/test/1688586088985192.png
+Starting to process 2 file entries
+Error during upload process
+Traceback (most recent call last):
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 649, in get
+    raise self.model.DoesNotExist(
+drive.models.Folder.DoesNotExist: Folder matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/EDrive/drive/views.py", line 348, in upload_folder
+    uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/EDrive/drive/views.py", line 397, in process_uploads
+    create_folders(folder_structure, parent_folder)
+  File "/app/EDrive/drive/views.py", line 386, in create_folders
+    new_folder, created = Folder.objects.get_or_create(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 950, in get_or_create
+    params = self._extract_model_params(defaults, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1039, in _extract_model_params
+    raise exceptions.FieldError(
+django.core.exceptions.FieldError: Invalid field name(s) for model Folder: 'folder_timestamp'.
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15458
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+/app/EDrive/drive/models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+Number of files received: 2
+Number of file paths received: 2
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+File name: 1688586088985192.png, Path: test/test/1688586088985192.png
+Starting to process 2 file entries
+Error during upload process
+Traceback (most recent call last):
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 649, in get
+    raise self.model.DoesNotExist(
+drive.models.Folder.DoesNotExist: Folder matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: drive_folder.folder_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/EDrive/drive/views.py", line 348, in upload_folder
+    uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/EDrive/drive/views.py", line 397, in process_uploads
+    create_folders(folder_structure, parent_folder)
+  File "/app/EDrive/drive/views.py", line 386, in create_folders
+    new_folder, created = Folder.objects.get_or_create(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/EDrive/drive/models.py", line 110, in save
+    super().save(*args, **kwargs)
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: drive_folder.folder_id
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15437
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/js/main.js HTTP/1.1" 304 0
+/app/EDrive/drive/models.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/app/EDrive/drive/models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive HTTP/1.1" 301 0
+"GET /drive/ HTTP/1.1" 200 21224
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Number of files received: 1
+Number of file paths received: 1
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+Starting to process 1 file entries
+Error during upload process
+Traceback (most recent call last):
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 649, in get
+    raise self.model.DoesNotExist(
+drive.models.Folder.DoesNotExist: Folder matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: drive_folder.folder_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/EDrive/drive/views.py", line 348, in upload_folder
+    uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/EDrive/drive/views.py", line 399, in process_uploads
+    create_folders(folder_structure, parent_folder)
+  File "/app/EDrive/drive/views.py", line 386, in create_folders
+    new_folder, created = Folder.objects.get_or_create(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/app/EDrive/drive/models.py", line 110, in save
+    super().save(*args, **kwargs)
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.cache/pypoetry/virtualenvs/edrive-9TtSrW0h-py3.12/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: drive_folder.folder_id
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15437
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 15227
+Number of files received: 1
+Number of file paths received: 1
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+Starting to process 1 file entries
+Created new folder: test
+Folder creation complete. Created 1 folders.
+Saving file: 1688586088985192.png in folder: test
+Saved file: 1688586088985192.png
+Upload complete. Uploaded 1 files, created 1 folders, renamed 0 files.
+Uploaded 1 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 24165
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 23994
+"GET /drive/folder/bfb73a4ee15c4ae1792bc3a59ccc8fafca9c8a1487677f8b7722e90168a2d00d/ HTTP/1.1" 200 22547
+"POST /drive/delete-file/2334c8b55b9a92101ddc6b84dd6b58925d33cb979412af99f9c36a974eaeb532/ HTTP/1.1" 302 0
+"GET /drive/folder/bfb73a4ee15c4ae1792bc3a59ccc8fafca9c8a1487677f8b7722e90168a2d00d/ HTTP/1.1" 200 15376
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+Number of files received: 2
+Number of file paths received: 2
+File name: 1688586088985192.png, Path: test/1688586088985192.png
+File name: 1688586088985192.png, Path: test/test/1688586088985192.png
+Starting to process 2 file entries
+Created new folder: test
+Created new folder: test
+Folder creation complete. Created 2 folders.
+Saving file: 1688586088985192.png in folder: test
+Saved file: 1688586088985192.png
+Saving file: 1688586088985192.png in folder: test
+Saved file: 1688586088985192.png
+Upload complete. Uploaded 2 files, created 2 folders, renamed 0 files.
+Uploaded 2 files, created 2 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/bfb73a4ee15c4ae1792bc3a59ccc8fafca9c8a1487677f8b7722e90168a2d00d/ HTTP/1.1" 200 24314
+"GET /drive/folder/bfb73a4ee15c4ae1792bc3a59ccc8fafca9c8a1487677f8b7722e90168a2d00d/ HTTP/1.1" 200 24143
+"GET /drive/folder/787e34a655575b62e86c61f1e64ca85b90f5042cb18c3009e66c82e488471565/ HTTP/1.1" 200 31460
+"GET /drive/folder/bcfc4a40021237d9ab3f1ed41133c3e4bce220e911b6319aaa4e95704fe5bd5e/ HTTP/1.1" 200 22845
+"GET /drive/folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 200 23994
+"GET /drive/ HTTP/1.1" 200 21227
+"POST /drive/delete-folder/4f317a065ce8078ff522f1079edf79584adcb5ff017fd030550dabfb5e0dc67a/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12460
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21226
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 29939
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38658
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 47373
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56090
+Number of files received: 4
+Number of file paths received: 4
+File name: 1688586088985192.png, Path: Wallpapers/1688586088985192.png
+File name: 1688586126436947.png, Path: Wallpapers/1688586126436947.png
+File name: 1688605773027279.jpg, Path: Wallpapers/1688605773027279.jpg
+File name: 1688606007239528.png, Path: Wallpapers/1688606007239528.png
+Starting to process 4 file entries
+Created new folder: Wallpapers
+Folder creation complete. Created 1 folders.
+Saving file: 1688586088985192.png in folder: Wallpapers
+Saved file: 1688586088985192.png
+Saving file: 1688586126436947.png in folder: Wallpapers
+Saved file: 1688586126436947.png
+Saving file: 1688605773027279.jpg in folder: Wallpapers
+Saved file: 1688605773027279.jpg
+Saving file: 1688606007239528.png in folder: Wallpapers
+Saved file: 1688606007239528.png
+Upload complete. Uploaded 4 files, created 1 folders, renamed 0 files.
+Uploaded 4 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 64985
+"GET /drive/ HTTP/1.1" 200 64814
+"POST /drive/delete-folder/eea4bea8e06b2983ecdd65d7f0d199c485df21737c0b20f778342bfcf65ef1a8/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56090
+Number of files received: 4
+Number of file paths received: 4
+File name: 1688586088985192.png, Path: Wallpapers/1688586088985192.png
+File name: 1688586126436947.png, Path: Wallpapers/1688586126436947.png
+File name: 1688605773027279.jpg, Path: Wallpapers/1688605773027279.jpg
+File name: 1688606007239528.png, Path: Wallpapers/1688606007239528.png
+Starting to process 4 file entries
+Created new folder: Wallpapers
+Folder creation complete. Created 1 folders.
+Saving file: 1688586088985192.png in folder: Wallpapers
+Saved file: 1688586088985192.png
+Saving file: 1688586126436947.png in folder: Wallpapers
+Saved file: 1688586126436947.png
+Saving file: 1688605773027279.jpg in folder: Wallpapers
+Saved file: 1688605773027279.jpg
+Saving file: 1688606007239528.png in folder: Wallpapers
+Saved file: 1688606007239528.png
+Upload complete. Uploaded 4 files, created 1 folders, renamed 0 files.
+Uploaded 4 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 64985
+"GET /drive/ HTTP/1.1" 200 64814
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 43749
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 52517
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 61246
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 61246
+"GET /static/css/styles.css HTTP/1.1" 200 11130
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 61246
+"GET /static/css/styles.css HTTP/1.1" 200 11130
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 69951
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 78664
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 87377
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 96088
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11221
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11221
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11221
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11176
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11130
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11267
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11267
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11197
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11197
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11193
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11130
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11175
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 11175
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 200 9363
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104799
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 15387
+"GET /static/css/styles.css HTTP/1.1" 200 9318
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Saved file: skyscrappers.png
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24346
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24174
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24174
+"GET /static/css/styles.css HTTP/1.1" 200 9318
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24174
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24174
+"GET /static/css/styles.css HTTP/1.1" 200 9317
+"GET /drive/ HTTP/1.1" 200 64817
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/50c83a162ee102e28fa4f1559ae8cd0b3df08220f721f2ddd6af061c78fcb05f/ HTTP/1.1" 200 15234
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 64817
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104802
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104802
+"GET /static/css/styles.css HTTP/1.1" 200 9332
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104802
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104802
+"GET /static/css/styles.css HTTP/1.1" 200 9347
+"GET /drive/folder/05c15b186ed5bcb28ca832e99e1a4d4c108be1147e400bc50269c30596c480ca/ HTTP/1.1" 200 15386
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/05c15b186ed5bcb28ca832e99e1a4d4c108be1147e400bc50269c30596c480ca/ HTTP/1.1" 200 15554
+"GET /drive/folder/05c15b186ed5bcb28ca832e99e1a4d4c108be1147e400bc50269c30596c480ca/ HTTP/1.1" 200 15386
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 200 104802
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8fb467eeda5e7756848bed9d46bf71383a9e36a4f6a047c95c836e543ddc3577/ HTTP/1.1" 200 24174
+"GET /drive/ HTTP/1.1" 200 64817
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/delete-folder/2449772c9a3841ea2f176afc22fd220d536f0477761845e2c7aea1547b5d3e6e/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56090
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/delete-folder/50c83a162ee102e28fa4f1559ae8cd0b3df08220f721f2ddd6af061c78fcb05f/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 47379
+"POST /drive/delete-folder/b3751fcd605348c822a171f2dd28d3a6606811dd1d689983b64aade6777e6240/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38660
+"POST /drive/delete-folder/d9fcc66443868e8ccee5a3cfd4444ec13f7883059712eec68d75579106157c8c/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 29945
+"POST /drive/delete-folder/e7d7603b9741e77f057e2fc173516c291be7b0dd343064ef45984959322eb47e/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21228
+"POST /drive/delete-folder/18a3c4d6bcbe8d997ae9d9f860865921baba786edab44b0177a1952781a8b7d2/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12460
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Saved file: skyscrappers.png
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21422
+"GET /drive/ HTTP/1.1" 200 21250
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 200 9386
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /static/css/styles.css HTTP/1.1" 200 9386
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /static/css/styles.css HTTP/1.1" 200 9386
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/ HTTP/1.1" 200 21256
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 200 9386
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 86515
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 93635
+"GET /static/css/styles.css HTTP/1.1" 304 0
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 21256
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 28631
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 36161
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 93635
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 95876
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 104640
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 113532
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 122249
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 130966
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 139683
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 148400
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 157117
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 165834
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 174551
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 183271
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 191990
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 200709
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209428
+"GET /drive/ HTTP/1.1" 200 35961
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209252
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209252
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209252
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209252
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209252
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9300
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9452
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9451
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9451
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 200 9451
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9418
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9452
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9452
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9824
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 9947
+"GET /static/js/main.js HTTP/1.1" 200 5398
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 10203
+"GET /static/js/main.js HTTP/1.1" 200 5398
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 200 10517
+"GET /static/js/main.js HTTP/1.1" 200 6116
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/60e9c6ff60e65ed30cdfcc79d21b374a62c44205573b446c4ed38b6ce2d24e14/ HTTP/1.1" 200 15398
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209516
+"GET /drive/folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 200 209348
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 35973
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 36141
+"GET /drive/ HTTP/1.1" 200 35973
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 35973
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 43299
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 50613
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 58118
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 57931
+"GET /static/css/styles.css HTTP/1.1" 200 10204
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 57931
+"GET /static/css/styles.css HTTP/1.1" 200 10204
+"GET /static/js/main.js HTTP/1.1" 200 5399
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 57931
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 65436
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 65249
+"GET /static/css/styles.css HTTP/1.1" 200 10614
+"GET /static/js/main.js HTTP/1.1" 200 5909
+"GET /drive/ HTTP/1.1" 200 65249
+"GET /drive/ HTTP/1.1" 200 65249
+"GET /static/css/styles.css HTTP/1.1" 200 10614
+"GET /static/js/main.js HTTP/1.1" 200 5909
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 65415
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 65249
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 200 5798
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 65249
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 65415
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 65415
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 200 5785
+"GET /drive/view-file/3f907241f51d20a621298b7c5e26a33e9d48030bdcd160ae0a3467682712bc57/ HTTP/1.1" 200 3236571
+"GET /drive/ HTTP/1.1" 200 65831
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 65831
+"GET /static/css/styles.css HTTP/1.1" 200 10614
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 65831
+"POST /drive/delete-file/b240fc1df35bb7c03c3af36423673748552e5cb4a148a380e86169ae937d872b/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 58420
+"POST /drive/delete-file/3f907241f51d20a621298b7c5e26a33e9d48030bdcd160ae0a3467682712bc57/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 51005
+"POST /drive/delete-file/a49559feae015364ddf65754a34b5eb3239d85ab715eeb9b24a17bad4836b266/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 43590
+"POST /drive/delete-file/60760e2705128ac8a74f1300f5080cf22892a142719484ff5a305646c407f688/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 36167
+"POST /drive/delete-file/65587a9697219f1d2a582efe66880fdd4fa00a1ce40ae43ed63adc07c4da5067/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 28736
+"POST /drive/delete-file/ca8e84cf97f20fb8d1b6bce68795f26a916c0bafa9835dc4a9cef93e86d81c1c/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21260
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /static/css/styles.css HTTP/1.1" 200 10614
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 21272
+"POST /drive/delete-folder/0ce5a21a682c5bd112439167dd81a5b19ca93b150d0a64a8fcf67970f588e91c/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12466
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Saved file: skyscrappers.png
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21444
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/e8a31dbb7bb0a507d320f5032d718f99734d0a7bcf579463b20b3ce70e3a17af/ HTTP/1.1" 200 88593
+"GET /drive/view-file/cd0f1c7ad8576e4a07d9cc7d8b8912ef0ea14bf4a9699798f4a05382ec7cb4f0/ HTTP/1.1" 200 26
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/e8a31dbb7bb0a507d320f5032d718f99734d0a7bcf579463b20b3ce70e3a17af/ HTTP/1.1" 200 88593
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/e8a31dbb7bb0a507d320f5032d718f99734d0a7bcf579463b20b3ce70e3a17af/ HTTP/1.1" 200 88593
+"GET /drive/ HTTP/1.1" 200 21272
+"POST /drive/delete-folder/e8a31dbb7bb0a507d320f5032d718f99734d0a7bcf579463b20b3ce70e3a17af/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12466
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21246
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 30154
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38887
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 47622
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Saved file: skyscrappers.png
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56368
+"GET /drive/ HTTP/1.1" 200 56196
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/rename-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56178
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 56178
+"GET /static/css/styles.css HTTP/1.1" 200 10614
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 56178
+"POST /drive/rename-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56180
+"GET /drive/ HTTP/1.1" 200 56180
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/rename-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 56178
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 63644
+"POST /drive/rename-file/e889a053b8bed2934cbf3f090677e1e2b1d179e30db79948174025e524daa930/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 63792
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/rename-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 63792
+"GET /static/js/main.js HTTP/1.1" 304 0
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/rename-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 63784
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 63634
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 63634
+"POST /drive/move-folder/86deb0ef3d8de365083dd4a3dd04a062beba8d39cd4e21eb545eeb5bdd6732f5/ HTTP/1.1" 302 0
+"GET /drive/folder/47946f6d888111f2d9b689f5cfaaf4b5f009aab243dc1bf8e762d3d10e7e5f91/ HTTP/1.1" 200 24164
+"GET /drive/ HTTP/1.1" 200 54901
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 54901
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/rename-folder/9f0cb5cca47cbe27e2173c4800bb04ddb78e1bc24594b3b7b5e3fc17aceb31d8/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 55044
+"POST /drive/rename-folder/d45e105e2d7a524272d8b183472e4569e446f148ea285bc5b8a06d806f76e521/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 55173
+"POST /drive/rename-folder/d45e105e2d7a524272d8b183472e4569e446f148ea285bc5b8a06d806f76e521/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 55173
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/rename-file/e889a053b8bed2934cbf3f090677e1e2b1d179e30db79948174025e524daa930/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 55060
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 54899
+"GET /drive/ HTTP/1.1" 200 54899
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 54899
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/delete-folder/9f0cb5cca47cbe27e2173c4800bb04ddb78e1bc24594b3b7b5e3fc17aceb31d8/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 46174
+"POST /drive/delete-folder/4fffe721970e7d7c99a8c1a9704f6818892386bda5740a8110ca998d048ad4c7/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 37448
+"POST /drive/delete-folder/d45e105e2d7a524272d8b183472e4569e446f148ea285bc5b8a06d806f76e521/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 28715
+"POST /drive/delete-folder/47946f6d888111f2d9b689f5cfaaf4b5f009aab243dc1bf8e762d3d10e7e5f91/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 19935
+"POST /drive/delete-file/e889a053b8bed2934cbf3f090677e1e2b1d179e30db79948174025e524daa930/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12466
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Save path: 184/New Text Document.txt
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Save path: 184/photomode_01102023_065641.png
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Save path: 184/photomode_02122021_181515.png
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Save path: 184/photomode_02122021_181519.png
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Save path: 184/photomode_03122021_173218.png
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Save path: 184/photomode_26112021_170453.png
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Save path: 184/photomode_26112021_170457.png
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Save path: 184/photomode_28092023_231914.png
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Save path: 184/photomode_28092023_231922.png
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Save path: 184/skyscrappers.png
+Saved file: skyscrappers.png
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21444
+"GET /drive/ HTTP/1.1" 200 21272
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"POST /drive/delete-folder/9a013e6ea95ed6bb95bd094b7864575964e01c028a5e88e4a58d43a3403126d1/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12466
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Save path: 185/New Text Document.txt
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Save path: 185/photomode_01102023_065641.png
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Save path: 185/photomode_02122021_181515.png
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Save path: 185/photomode_02122021_181519.png
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Save path: 185/photomode_03122021_173218.png
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Save path: 185/photomode_26112021_170453.png
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Save path: 185/photomode_26112021_170457.png
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Save path: 185/photomode_28092023_231914.png
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Save path: 185/photomode_28092023_231922.png
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Save path: 185/skyscrappers.png
+Saved file: skyscrappers.png
+Deleted temporary directory: 185
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21444
+"GET /drive/ HTTP/1.1" 200 21272
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 30140
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 15239
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 24150
+"POST /drive/rename-folder/2bb9d3e7ba63d67b1894e373cdbde730730ec74b005dd415f5968c3c22027c95/ HTTP/1.1" 302 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 24155
+"GET /drive/ HTTP/1.1" 200 29997
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38863
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/move-folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 302 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32919
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /static/css/styles.css HTTP/1.1" 200 10616
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /static/css/styles.css HTTP/1.1" 200 10616
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2bb9d3e7ba63d67b1894e373cdbde730730ec74b005dd415f5968c3c22027c95/ HTTP/1.1" 200 15387
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/1aabf71dc39a2994772fcd05e5d2851719b8fe05bf4788fd98391fd517f6b433/ HTTP/1.1" 200 88593
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/2bb9d3e7ba63d67b1894e373cdbde730730ec74b005dd415f5968c3c22027c95/ HTTP/1.1" 200 15387
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 200 10573
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 29997
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38867
+"GET /static/css/styles.css HTTP/1.1" 304 0
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 47597
+"GET /static/css/styles.css HTTP/1.1" 304 0
+/app/EDrive/drive/views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 55074
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 200 32724
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /static/css/styles.css HTTP/1.1" 200 10573
+"GET /drive/folder/d29564219f4277c2e6886a05bdd04f688190144643d5ce5a86a6b11a02fd5e8c/ HTTP/1.1" 200 15391
+"GET /static/css/styles.css HTTP/1.1" 200 10598
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 200 15239
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 200 15239
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 200 15239
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 200 15239
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/d7c6f232c823fe6ddb0a0cf003dc20ad25bf9d899ec8306ad3464710afceb62a/ HTTP/1.1" 200 15240
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/d7c6f232c823fe6ddb0a0cf003dc20ad25bf9d899ec8306ad3464710afceb62a/ HTTP/1.1" 200 15240
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/folder/d7c6f232c823fe6ddb0a0cf003dc20ad25bf9d899ec8306ad3464710afceb62a/ HTTP/1.1" 200 15240
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 200 15239
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/folder/1aabf71dc39a2994772fcd05e5d2851719b8fe05bf4788fd98391fd517f6b433/ HTTP/1.1" 200 88593
+"GET /drive/ HTTP/1.1" 200 54915
+"GET /drive/ HTTP/1.1" 200 56319
+"GET /static/css/styles.css HTTP/1.1" 304 0
+Not Found: /drive/move-folder//
+"POST /drive/move-folder// HTTP/1.1" 404 5216
+"POST /drive/delete-folder/d7c6f232c823fe6ddb0a0cf003dc20ad25bf9d899ec8306ad3464710afceb62a/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 47592
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"POST /drive/delete-folder/8d11450c70d909347b3528d725aa33034619b361c61b1f8cbf26d6bf6e5f50c1/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 38867
+"POST /drive/delete-folder/a7fa2faf734849b79dd963ba8dde3f45716def5ccc0f3831ce82a9412556d6bd/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 30142
+"POST /drive/delete-folder/1aabf71dc39a2994772fcd05e5d2851719b8fe05bf4788fd98391fd517f6b433/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21339
+"POST /drive/delete-file/1d3bb6a7ea297efa44e9fa35828f749ee188fe888f30e3b47aad72ef0330bdc5/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 12466
+"GET /drive/ HTTP/1.1" 200 12466
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /static/js/main.js HTTP/1.1" 304 0
+Number of files received: 10
+Number of file paths received: 10
+File name: New Text Document.txt, Path: Cyberpunk 2077/New Text Document.txt
+File name: photomode_01102023_065641.png, Path: Cyberpunk 2077/photomode_01102023_065641.png
+File name: photomode_02122021_181515.png, Path: Cyberpunk 2077/photomode_02122021_181515.png
+File name: photomode_02122021_181519.png, Path: Cyberpunk 2077/photomode_02122021_181519.png
+File name: photomode_03122021_173218.png, Path: Cyberpunk 2077/photomode_03122021_173218.png
+File name: photomode_26112021_170453.png, Path: Cyberpunk 2077/photomode_26112021_170453.png
+File name: photomode_26112021_170457.png, Path: Cyberpunk 2077/photomode_26112021_170457.png
+File name: photomode_28092023_231914.png, Path: Cyberpunk 2077/photomode_28092023_231914.png
+File name: photomode_28092023_231922.png, Path: Cyberpunk 2077/photomode_28092023_231922.png
+File name: skyscrappers.png, Path: Cyberpunk 2077/skyscrappers.png
+Starting to process 10 file entries
+Created new folder: Cyberpunk 2077
+Folder creation complete. Created 1 folders.
+Saving file: New Text Document.txt in folder: Cyberpunk 2077
+Save path: 191/New Text Document.txt
+Saved file: New Text Document.txt
+Saving file: photomode_01102023_065641.png in folder: Cyberpunk 2077
+Save path: 191/photomode_01102023_065641.png
+Saved file: photomode_01102023_065641.png
+Saving file: photomode_02122021_181515.png in folder: Cyberpunk 2077
+Save path: 191/photomode_02122021_181515.png
+Saved file: photomode_02122021_181515.png
+Saving file: photomode_02122021_181519.png in folder: Cyberpunk 2077
+Save path: 191/photomode_02122021_181519.png
+Saved file: photomode_02122021_181519.png
+Saving file: photomode_03122021_173218.png in folder: Cyberpunk 2077
+Save path: 191/photomode_03122021_173218.png
+Saved file: photomode_03122021_173218.png
+Saving file: photomode_26112021_170453.png in folder: Cyberpunk 2077
+Save path: 191/photomode_26112021_170453.png
+Saved file: photomode_26112021_170453.png
+Saving file: photomode_26112021_170457.png in folder: Cyberpunk 2077
+Save path: 191/photomode_26112021_170457.png
+Saved file: photomode_26112021_170457.png
+Saving file: photomode_28092023_231914.png in folder: Cyberpunk 2077
+Save path: 191/photomode_28092023_231914.png
+Saved file: photomode_28092023_231914.png
+Saving file: photomode_28092023_231922.png in folder: Cyberpunk 2077
+Save path: 191/photomode_28092023_231922.png
+Saved file: photomode_28092023_231922.png
+Saving file: skyscrappers.png in folder: Cyberpunk 2077
+Save path: 191/skyscrappers.png
+Saved file: skyscrappers.png
+Deleted temporary directory: 191
+Upload complete. Uploaded 10 files, created 1 folders, renamed 0 files.
+Uploaded 10 files, created 1 folders, renamed 0 files
+"POST /drive/upload_folder/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21444
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 88593
+"POST /drive/create_folder/ HTTP/1.1" 302 0
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97509
+"GET /drive/folder/6bb28cba929799f275c635baa3cda48187c3771fcf7d30c4fd220cf79dc22255/ HTTP/1.1" 200 15398
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/folder/6bb28cba929799f275c635baa3cda48187c3771fcf7d30c4fd220cf79dc22255/ HTTP/1.1" 200 15398
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97361
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /static/css/styles.css HTTP/1.1" 304 0
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 21272
+"GET /drive/ HTTP/1.1" 200 21275
+"GET /drive/ HTTP/1.1" 200 21278
+"GET /drive/ HTTP/1.1" 200 21275
+"GET /static/css/styles.css HTTP/1.1" 200 10598
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 21275
+"GET /drive/ HTTP/1.1" 200 21275
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /static/css/styles.css HTTP/1.1" 200 10598
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97370
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97370
+"GET /drive/folder/6bb28cba929799f275c635baa3cda48187c3771fcf7d30c4fd220cf79dc22255/ HTTP/1.1" 200 15407
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97370
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97497
+"GET /static/css/styles.css HTTP/1.1" 200 10598
+"GET /static/js/main.js HTTP/1.1" 200 5785
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2545
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97497
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97497
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97497
+"GET /drive/folder/6bb28cba929799f275c635baa3cda48187c3771fcf7d30c4fd220cf79dc22255/ HTTP/1.1" 200 15552
+"GET /drive/ HTTP/1.1" 200 21281
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97515
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97515
+"GET /drive/ HTTP/1.1" 200 21281
+"POST /drive/upload_file/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 30310
+"GET /home/ HTTP/1.1" 302 0
+"GET /drive/ HTTP/1.1" 200 30151
+"GET /drive/folder/b7eb594bb28b7a0d3a94a2f145f33aba3118eba2c8ae005d57d726f7c59827b4/ HTTP/1.1" 200 97515
+"GET /drive/folder/6bb28cba929799f275c635baa3cda48187c3771fcf7d30c4fd220cf79dc22255/ HTTP/1.1" 200 15552
+"GET /drive/ HTTP/1.1" 200 30151

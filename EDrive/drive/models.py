@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils import timezone
 
 import os
 import hashlib
@@ -69,6 +70,8 @@ class Folder(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     hash = models.CharField(max_length=64, editable=False, unique=True)
     favorite = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Folder"
@@ -79,6 +82,7 @@ class Folder(models.Model):
             models.Index(fields=["owner"]),
             models.Index(fields=["hash"]),
         ]
+        unique_together = ['folder_name', 'folder_parent', 'owner']
 
     def __str__(self):
         return self.folder_name
@@ -87,15 +91,14 @@ class Folder(models.Model):
         return reverse('folder', args=[self.hash])
     
     def get_parent_folder(self):
-            array = []
-            current_folder = self.folder_parent
+        array = []
+        current_folder = self.folder_parent
 
-            while current_folder is not None:
-                array.append(current_folder)
-                current_folder = current_folder.folder_parent
+        while current_folder is not None:
+            array.append(current_folder)
+            current_folder = current_folder.folder_parent
 
-            return array[::-1]
-            
+        return array[::-1]
 
 
     def save(self, *args, **kwargs):

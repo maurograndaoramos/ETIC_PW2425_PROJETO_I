@@ -1,7 +1,7 @@
 import os
 import zipfile
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import FileResponse, HttpResponse
+from django.http import FileResponse, HttpResponse, Http404
 from drive.models import File, Folder
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
@@ -10,6 +10,8 @@ from django.contrib import messages
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from hub.utilities import calculate_used_quota, calculate_available_quota, has_enough_quota
+import shutil
+from django.conf import settings
 
 
 @login_required
@@ -112,10 +114,13 @@ def rename_file(request, hash):
         final_name = f"{new_name} ({counter}){ext}"
 
     if counter > 1:
-        messages.error(request, "A file with that name already exists. Renamed to " + final_name + ".")
+        messages.warning(request, "A file with that name already exists. Renamed to " + final_name + ".")
+    else:
+        messages.success(request, "File has been renamed to " + final_name + ".")
 
     file.file_name = final_name
     file.save()
+    
     
     if file.file_parent:
         return redirect('folder', hash=file.file_parent.hash)
@@ -130,6 +135,7 @@ def move_file(request, hash):
     new_folder_id = request.POST.get('folder_id')
     new_folder = Folder.objects.get(pk=new_folder_id)
     file.file_parent = new_folder
+    messages.success(request, "File has been moved to " + new_folder + ".")
     file.save()
     if file.file_parent:
         return redirect('folder', hash=file.file_parent.hash)
@@ -206,6 +212,8 @@ def rename_folder(request, hash):
     
     if counter > 1:
         messages.error(request, "A folder with that name already exists. Renamed to " + new_name + ".")
+    else:
+        messages.success(request, "Folder has been renamed to " + new_name + ".")
 
     folder.folder_name = new_name
     folder.save()
@@ -236,6 +244,8 @@ def move_folder(request, hash):
         if counter > 1:
             messages.error(request, "A folder with that name already exists in the destination. Renamed to " + new_name + ".")
             folder.folder_name = new_name
+        else:
+            messages.success(request, "Folder has been moved to " + new_folder.folder_name + ".")
         
         folder.folder_parent = new_folder
         folder.save()
@@ -282,7 +292,9 @@ def upload_file(request):
             file_name = f"{original_name} ({counter}){ext}"
 
         if counter > 1:
-            messages.error(request, "A file with that name already exists. Renamed to " + file_name + ".")
+            messages.warning(request, "A file with that name already exists. Renamed to " + file_name + ".")
+        else:
+            messages.success(request, "File " + file_name + " has been uploaded.")
 
         temp_path = default_storage.save(file_name, ContentFile(file.read()))
 
@@ -302,30 +314,147 @@ def upload_file(request):
             return redirect('drive')
     else:
         return redirect('drive')
+    
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required
 def upload_folder(request):
     if request.method == 'POST':
-        folder_parent_hash = request.POST.get('folder_id', None)
+        files = request.FILES.getlist('folder')
+        file_paths = request.POST.getlist('file_paths')
+        
+        logger.debug(f"Number of files received: {len(files)}")
+        logger.debug(f"Number of file paths received: {len(file_paths)}")
+        
+        for f, path in zip(files, file_paths):
+            logger.debug(f"File name: {f.name}, Path: {path}")
+
+    if request.method == 'POST':
+        current_user = request.user
+        folder_parent_hash = request.POST.get('folder_id')
         folder_parent = None
 
         if folder_parent_hash:
-            folder_parent = Folder.objects.get(hash=folder_parent_hash)
+            try:
+                folder_parent = get_object_or_404(Folder, hash=folder_parent_hash)
+            except Http404:
+                messages.error(request, "The specified parent folder does not exist.")
+                return redirect('drive')
 
         files = request.FILES.getlist('folder')
-        for f in files:
-            new_file = File(file_path=f, owner=request.user, file_parent=folder_parent)
-            new_file.file_name = f.name
-            new_file.file_size = f.size
-            new_file.file_timestamp = timezone.now()
-            new_file.save()
+        
+        if not files:
+            messages.error(request, "No files were selected for upload.")
+            return redirect('folder', folder_parent.hash) if folder_parent else redirect('drive')
 
-        if folder_parent:
-            return redirect('folder', folder_parent.hash)
-        else:
-            return redirect('drive')
+        total_size = sum(f.size for f in files)
+
+        if not has_enough_quota(current_user, total_size):
+            messages.error(request, "You do not have enough quota to upload these files.")
+            return redirect('folder', folder_parent.hash) if folder_parent else redirect('drive')
+
+        try:
+            uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+            logger.debug(f"Uploaded {uploaded_files} files, created {created_folders} folders, renamed {len(renamed_files)} files")
+            
+            for original_name, new_name in renamed_files:
+                logger.debug(f"Renamed: {original_name} to {new_name}")
+                messages.info(request, f"A file named '{original_name}' already exists. Renamed to '{new_name}'.")
+
+            messages.success(request, f"Successfully uploaded {uploaded_files} files and created {created_folders} folders.")
+        except Exception as e:
+            logger.exception("Error during upload process")
+            messages.error(request, f"An error occurred during the upload process: {str(e)}")
+
+        return redirect('folder', folder_parent.hash) if folder_parent else redirect('drive')
     else:
         return redirect('drive')
+
+def process_uploads(file_data, user, parent_folder):
+    uploaded_files = 0
+    created_folders = 0
+    renamed_files = []
+    folder_structure = {}
+    temp_directories = set()
+    logger.debug(f"Starting to process {len(file_data)} file entries")
+    # First pass: Analyze file paths and create folder structure
+    for file, path in file_data:
+        path_parts = path.split('/')
+        current_dict = folder_structure
+        for part in path_parts[:-1]:
+            if part not in current_dict:
+                current_dict[part] = {}
+            current_dict = current_dict[part]
+    # Second pass: Create folders
+    def create_folders(structure, parent):
+        nonlocal created_folders
+        for folder_name, subfolders in structure.items():
+            try:
+                new_folder = Folder.objects.get(
+                    folder_name=folder_name,
+                    owner=user,
+                    folder_parent=parent
+                )
+                logger.debug(f"Found existing folder: {folder_name}")
+            except Folder.DoesNotExist:
+                new_folder = Folder(
+                    folder_name=folder_name,
+                    owner=user,
+                    folder_parent=parent,
+                    created_at=timezone.now()
+                )
+                new_folder.save()
+                created_folders += 1
+                logger.debug(f"Created new folder: {folder_name}")
+            create_folders(subfolders, new_folder)
+    create_folders(folder_structure, parent_folder)
+    logger.debug(f"Folder creation complete. Created {created_folders} folders.")
+    # Third pass: Save files
+    for file, path in file_data:
+        path_parts = path.split('/')
+        current_folder = parent_folder
+        for part in path_parts[:-1]:
+            current_folder = Folder.objects.get(folder_name=part, folder_parent=current_folder, owner=user)
+        file_name = path_parts[-1]
+        logger.debug(f"Saving file: {file_name} in folder: {current_folder.folder_name}")
+        original_name, ext = os.path.splitext(file_name)
+        counter = 1
+        while File.objects.filter(file_name=file_name, file_parent=current_folder, owner=user).exists():
+            counter += 1
+            file_name = f"{original_name} ({counter}){ext}"
+        if counter > 1:
+            renamed_files.append((f"{original_name}{ext}", file_name))
+            logger.debug(f"Renamed file to: {file_name}")
+        # Debugging the path being constructed
+        temp_dir = os.path.join(str(current_folder.folder_id))
+        temp_directories.add(temp_dir)
+        save_path = os.path.join(temp_dir, file_name)
+        logger.debug(f"Save path: {save_path}")
+        temp_path = default_storage.save(save_path, ContentFile(file.read()))
+        new_file = File(
+            file_path=temp_path,
+            file_name=file_name,
+            file_size=file.size,
+            file_timestamp=timezone.now(),
+            owner=user,
+            file_parent=current_folder
+        )
+        new_file.save()
+        uploaded_files += 1
+        logger.debug(f"Saved file: {file_name}")
+    # Remove temporary directories
+    for temp_dir in temp_directories:
+        full_temp_dir_path = os.path.join(settings.MEDIA_ROOT, temp_dir)
+        if os.path.exists(full_temp_dir_path) and os.path.isdir(full_temp_dir_path):
+            try:
+                shutil.rmtree(full_temp_dir_path)
+                logger.debug(f"Deleted temporary directory: {full_temp_dir_path}")
+            except Exception as e:
+                logger.error(f"Error deleting temporary directory {full_temp_dir_path}: {str(e)}")
+    logger.debug(f"Upload complete. Uploaded {uploaded_files} files, created {created_folders} folders, renamed {len(renamed_files)} files.")
+    return uploaded_files, created_folders, renamed_files
 
 @login_required
 def create_folder(request):
@@ -342,11 +471,13 @@ def create_folder(request):
         counter = 1
 
         while Folder.objects.filter(folder_name=folder_name, folder_parent=folder_parent, owner=current_user).exists():
-                counter += 1
-                folder_name = f"{original_name} ({counter})"
-                
+            counter += 1
+            folder_name = f"{original_name} ({counter})"
+
         if counter > 1:
-            messages.error(request, "A file with that name already exists. Renamed to " + folder_name + ".")
+            messages.warning(request, "A folder with that name already exists. Renamed to " + folder_name + ".")
+        else:
+            messages.success(request, "Folder " + folder_name + " has been created.")
 
         new_folder = Folder(
             folder_name=folder_name, 
@@ -356,7 +487,7 @@ def create_folder(request):
         new_folder.save()
 
         if folder_parent:
-            return redirect('folder', folder_parent.hash)  
+            return redirect('folder', folder_parent.hash)
         else:
             return redirect('drive')
     else:

@@ -1,33 +1,20 @@
-Aceder Login while Logged On - Done
-Procurar SubCode em Admin.py - done
-Hash out folders and file urls - done
-Create folder or add file redirects to drive.view - done
-Create the breadcrumb logic - done
-Duplicação de nome - can´t open joe - done
-Middleware - Done
+Fourteen reasons of WHY MAURO, WHY?!
 
-FIX BUG WITH UPLOAD FUCKING UP DIRECTORY - DONE
-Finish the move functionality - Done
-Implement user quota tiers in web app - Done
-Frontend de Reset Password no Frontoffice - Done!!!!
-NoReverseMatch at /drive/upload_folder/ - BUG in Mass upload - Done!
+1. Create other template pages
+2. Change CSS Hexes to the Vars created today and see how to implement a light/dark mode.
+3. Add move to files. Already added svg, need to call the correct py function.
+4. Add name checking to move file.
+5. Add "Create Folder, Add Folder, Add File" to Sidebar if there's no file or folders in current view.
+6. Correct Elipsis in file and folder item.
+7. prettify modals, add ESC button press to exit modals and sidebar
 
-Try to create a tree logic (?) to show on an additional navbar in folder_detail.html
+8. See if tree is feasible.
+9. See how to implement a search function.
+10. Add Usage template to drive, containing basic information for "nr of files and folders created, number of files and folders deleted, number of favorites, amount of space left.
+11. Add a star SVG to file/folder item and place it fixed on top right corner. It's a checkbox that checks if this file/folder is favorited by current.user. If so, it's filled in Yellow. If not, it's like any other button.
+12. Add a Favorites template in drive, accessible by a button in secondary-nav-wrapper.
+13. Add drag and drop
+14. Add a square svg to file/folder item and place it fixed on top left corner. It's a check box. If several files are selected, show option in secondary-nav-wrapper to bulk delete or bulk move.
 
-Large bulk upload stops renaming files and just hashes name 
-    Large bulk uploads also doesn't import folders at all so it just dumps everything as hash since there's no actual folder that each file belongs to
-        IF NOT DONE, SCRAP THIS SHITE
-
-Download de Folder not creating subfolders and adding it into the content
-
-Implementar a lógica do folder name no move_folder
-
-OPTIONAL:
-Fix Upload Folder functionality (It's just bulk uploading right now)
-
-Beautify it
-JS Animation it
-
-MASS SELECT IN JS and... Mass Delete?!?!?!
-Think about a drag and drop in JS........
-.... B L E H
+IMPORTANT DO NOT FORGET
+remove admin.py info from drive so admin can't see the log in.

@@ -84,12 +84,70 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // File rename modal
-    document.querySelectorAll('.rename-file-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+    document.querySelectorAll('.rename-file-btn').forEach(function(icon) {
+        icon.addEventListener('click', function() {
             const fileHash = this.getAttribute('data-file-hash');
             const form = document.getElementById('renameFileForm');
             form.action = `/drive/rename-file/${fileHash}/`;
             openModal('renameFileModal');
         });
     });
+
+    // Trash button functionality
+    document.querySelectorAll('.trash-btn').forEach(function(icon) {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            const action = this.getAttribute('data-action');
+            const itemType = this.hasAttribute('data-folder-hash') ? 'folder' : 'file';
+            if (confirm(`Are you sure you want to delete this ${itemType}?`)) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = action;
+                
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrfmiddlewaretoken';
+                csrfInput.value = csrfToken;
+                
+                form.appendChild(csrfInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    });
+
+    // Folder upload form
+    document.getElementById('upload-folder-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        var files = document.getElementById('folder-input').files;
+        
+        for (var i = 0; i < files.length; i++) {
+            formData.append('file_paths', files[i].webkitRelativePath);
+        }
+    
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin'
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Upload failed');
+            }
+        });
+    });
+
+    var messages = document.querySelectorAll('.messages .success, .messages .error, .messages .info, .messages .warning');
+    messages.forEach(function(message) {
+        setTimeout(function() {
+            message.classList.add('fade-out');
+            message.addEventListener('animationend', function() {
+                message.remove();
+            });
+        }, 5000);
+    });
+
 });

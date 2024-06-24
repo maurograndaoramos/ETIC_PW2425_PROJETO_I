@@ -24,7 +24,7 @@
         <h1 class="logo"><a href="{% url 'home' %}">EDrive</a></h1>
       </div>
       <div class="nav-left">
-        <h1 class="user-name">{{ user }}</h1>
+        <h1 class="user-name">Welcome, {{ user }}</h1>
         <form class="log-out-form" action="{% url 'logout' %}" method="post">
           {% csrf_token %}
           <button type="submit" class="logout-button" onclick="return confirm('Are you sure you want to log out?');"><svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,10 +92,10 @@
         <div id="upload-folder-modal" class="modal">
           <div class="modal-content">
             <span class="close" id="close-upload-folder">&times;</span>
-            <form id="upload-folder-form" class="upload-form" action="{% url 'upload_folder' %}" method="post" enctype="multipart/form-data">
+            <form id="upload-folder-form" class="upload-form" method="post" enctype="multipart/form-data" action="{% url 'upload_folder' %}">
               {% csrf_token %}
               <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="file" name="folder" required webkitdirectory>
+              <input type="file" id="folder-input" name="folder" webkitdirectory directory multiple>
               <button type="submit">Upload Folder</button>
             </form>
           </div>
