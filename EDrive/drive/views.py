@@ -379,7 +379,8 @@ def process_uploads(file_data, user, parent_folder):
     folder_structure = {}
     temp_directories = set()
     logger.debug(f"Starting to process {len(file_data)} file entries")
-    # First pass: Analyze file paths and create folder structure
+    
+    # Primeira volta: Criar estrutura de pastas
     for file, path in file_data:
         path_parts = path.split('/')
         current_dict = folder_structure
@@ -387,7 +388,8 @@ def process_uploads(file_data, user, parent_folder):
             if part not in current_dict:
                 current_dict[part] = {}
             current_dict = current_dict[part]
-    # Second pass: Create folders
+
+    # Segunda volta: Cria as pastas com a estrutura da primeira volta
     def create_folders(structure, parent):
         nonlocal created_folders
         for folder_name, subfolders in structure.items():
@@ -411,7 +413,8 @@ def process_uploads(file_data, user, parent_folder):
             create_folders(subfolders, new_folder)
     create_folders(folder_structure, parent_folder)
     logger.debug(f"Folder creation complete. Created {created_folders} folders.")
-    # Third pass: Save files
+
+    # Terceira volta: Grava os files no sítio certo
     for file, path in file_data:
         path_parts = path.split('/')
         current_folder = parent_folder
@@ -444,7 +447,8 @@ def process_uploads(file_data, user, parent_folder):
         new_file.save()
         uploaded_files += 1
         logger.debug(f"Saved file: {file_name}")
-    # Remove temporary directories
+
+    # Quarta volta: Limpa os diretórios temporários criados na segunda volta
     for temp_dir in temp_directories:
         full_temp_dir_path = os.path.join(settings.MEDIA_ROOT, temp_dir)
         if os.path.exists(full_temp_dir_path) and os.path.isdir(full_temp_dir_path):

@@ -1,10 +1,19 @@
 {% extends "home_generic.html" %}
 
-{% block content %}
-<h1>Welcome to EDrive</h1>
-<p>
-  Welcome to EDrive, a website developed by
-  <em>me</em>!
-</p>
 
+{% block content %}
+<main id="landing-main">
+  <section class="home-section" id="home-main-section">
+    <h2>Home</h2>
+    <p>Welcome to EDrive, a simple cloud storage service.</p>
+  </section>
+  <section class="home-section" id="home-about-section">
+    <h2>About</h2>
+
+  </section>
+  <section class="home-section" id="home-premium-section">
+    <h2>Premium</h2>
+    <p>Upgrade your account to premium to get more storage space.</p>
+  </section>
+</main>
 {% endblock %}

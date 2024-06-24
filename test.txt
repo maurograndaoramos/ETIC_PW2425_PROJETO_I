@@ -8,11 +8,15 @@ Fourteen reasons of WHY MAURO, WHY?!
 6. Correct Elipsis in file and folder item.
 7. prettify modals, add ESC button press to exit modals and sidebar
 
+- adding extras:
+    1. Change progress bar color Hexes
+    2. Move hamburguer and navbar to the right side. Move log out to hamburguer area.
+
 8. See if tree is feasible.
 9. See how to implement a search function.
 10. Add Usage template to drive, containing basic information for "nr of files and folders created, number of files and folders deleted, number of favorites, amount of space left.
 11. Add a star SVG to file/folder item and place it fixed on top right corner. It's a checkbox that checks if this file/folder is favorited by current.user. If so, it's filled in Yellow. If not, it's like any other button.
-12. Add a Favorites template in drive, accessible by a button in secondary-nav-wrapper.
+12. Add a Favorites template in drive, accessible by a button in secondary-nav-wrapper
 13. Add drag and drop
 14. Add a square svg to file/folder item and place it fixed on top left corner. It's a check box. If several files are selected, show option in secondary-nav-wrapper to bulk delete or bulk move.
 
