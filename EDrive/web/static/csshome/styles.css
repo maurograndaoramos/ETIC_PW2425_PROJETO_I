@@ -152,7 +152,7 @@ input:checked + .slider:before {
 }
 
 .logo:hover {
-  opacity: 0.8;
+  opacity: 0.35;
 }
 
 .nav-right, .nav-left {
@@ -172,7 +172,7 @@ input:checked + .slider:before {
 }
 
 .menu-toggle-label:hover {
-  opacity: 0.8;
+  opacity: 0.35;
 }
 
 .nav-left form {

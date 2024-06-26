@@ -197,4 +197,59 @@ document.addEventListener('DOMContentLoaded', function() {
         truncateFileName(element, 20);
     });
 
+    // Context menu
+    const body = document.querySelector('body');
+    const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
+
+    // Create custom context menu
+    const contextMenu = document.createElement('div');
+    contextMenu.id = 'custom-context-menu';
+    contextMenu.innerHTML = `
+        <ul>
+            <li id="create-folder">Create Folder</li>
+            <li id="upload-file">Upload File</li>
+        </ul>
+    `;
+    document.body.appendChild(contextMenu);
+
+    // Style the context menu
+    contextMenu.style.position = 'fixed';
+    contextMenu.style.zIndex = '9999';
+    contextMenu.style.display = 'none';
+
+    // Event listener for right-click
+    body.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        if (!nav.contains(e.target) && !footer.contains(e.target)) {
+            contextMenu.style.top = `${e.clientY}px`;
+            contextMenu.style.left = `${e.clientX}px`;
+            contextMenu.style.display = 'block';
+        }
+    });
+
+    // Hide context menu on left click anywhere
+    document.addEventListener('click', function() {
+        contextMenu.style.display = 'none';
+    });
+
+    // Handle menu item clicks
+    document.getElementById('create-folder').addEventListener('click', function() {
+        openModal('create-folder-modal');
+        contextMenu.style.display = 'none';
+    });
+
+    document.getElementById('upload-file').addEventListener('click', function() {
+        openModal('upload-file-modal');
+        contextMenu.style.display = 'none';
+    });
+
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+        } else {
+            console.error(`Modal with id ${modalId} not found`);
+        }
+    }
 });
