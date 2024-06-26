@@ -1,0 +1,4 @@
+Tag<->0.5.1
+
+Link:
+https://github.com/maurograndaoramos/myDjangoapp

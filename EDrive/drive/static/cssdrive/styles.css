@@ -53,7 +53,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+  opacity: 0.35;
 }
 
 
@@ -319,6 +319,17 @@ main {
 .folder-section {
   margin-top: 20px;
 }
+
+#create-folder-link p {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+#create-folder-link p {
+  color: var(--hover-color);
+  text-decoration: none;
+}
+
 
 .file-section {
   margin-top: 48px;

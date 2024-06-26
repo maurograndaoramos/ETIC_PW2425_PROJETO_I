@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('create-folder-btn').addEventListener('click', function() {
         openModal('create-folder-modal');
     });
-
+    
     document.getElementById('upload-folder-btn').addEventListener('click', function() {
         openModal('upload-folder-modal');
     });

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EDrive</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <script src="{% static 'js/main.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'cssdrive/styles.css' %}">
+  <script src="{% static 'jsdrive/main.js' %}"></script>
 </head>
 <body>
   <header class="header">
@@ -144,48 +144,6 @@
                 {% endfor %}
               </select>
               <button type="submit">Move</button>
-            </form>
-          </div>
-        </div>
-    
-
-        <div id="create-folder-modal" class="modal">
-          <div class="modal-content">
-            <span class="close" id="close-create-folder">&times;</span>
-            <h2 class="modal-title">Create Folder</h2>
-            <form id="create-folder-form" class="upload-form" action="{% url 'create_folder' %}" method="post">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="text" name="folder_name" placeholder="New Folder Name" required>
-              <button type="submit">Create Folder</button>
-            </form>
-          </div>
-        </div>
-        
-        <div id="upload-folder-modal" class="modal">
-          <div class="modal-content">
-            <span class="close" id="close-upload-folder">&times;</span>
-            <h2 class="modal-title">Upload Folder</h2>
-            <form id="upload-folder-form" class="upload-form" method="post" enctype="multipart/form-data" action="{% url 'upload_folder' %}">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="file" id="folder-input" name="folder" webkitdirectory directory multiple>
-              <label for="folder-input" class="file-input-label">Choose Folder</label>
-              <button type="submit">Upload Folder</button>
-            </form>
-          </div>
-        </div>
-        
-        <div id="upload-file-modal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 class="modal-title">Upload File</h2>
-            <form id="upload-file-form" class="upload-form" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              <input type="hidden" name="folder_id" value="{{ folder.hash }}">
-              <input type="file" id="file-input" name="file" required>
-              <label for="file-input" class="file-input-label">Choose File</label>
-              <button type="submit">Upload File</button>
             </form>
           </div>
         </div>
