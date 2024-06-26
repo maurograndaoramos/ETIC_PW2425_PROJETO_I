@@ -6,15 +6,37 @@
   --text-color: #ffffff;
   --hover-color: #ebf2fa;
   --background-color: #617288;
+  --button-color: #007bff;
 }
 
-/* General Styles */
+[data-theme="light"] {
+  --primary-color: #007bff;
+  --secondary-color: #f8f9fa;
+  --tertiary-color: #e9ecef;
+  --link-color: #0056b3;
+  --text-color: #333333;
+  --hover-color: #007bff;
+  --background-color: #ffffff;
+  --button-color: #007bff;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: var(--background-color);
   color: var(--text-color);
+}
+
+body.light-mode {
+  --primary-color: var(--light-primary-color);
+  --secondary-color: var(--light-secondary-color);
+  --tertiary-color: var(--light-tertiary-color);
+  --link-color: var(--light-link-color);
+  --text-color: var(--light-text-color);
+  --hover-color: var(--light-hover-color);
+  --background-color: var(--light-background-color);
+  --button-color: var(--light-button-color);
 }
 
 a {
@@ -24,7 +46,7 @@ a {
 
 button {
   padding: 8px 12px;
-  background: var(--primary-color);
+  background: var(--button-color);
   color: var(--link-color);
   border: none;
   cursor: pointer;
@@ -34,7 +56,8 @@ button:hover {
   opacity: 0.8;
 }
 
-/* Header Styles */
+
+
 .header {
   position: fixed;
   top: 0;
@@ -44,8 +67,8 @@ button:hover {
 }
 
 .nav {
-  background-color: #0b132b;
-  color: #ffffff;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -53,35 +76,105 @@ button:hover {
   height: 45px;
 }
 
+.logo:hover {
+  opacity: 0.8;
+}
+
 .nav-right, .nav-left {
   display: flex;
   align-items: center;
 }
 
-.nav-right h1, .nav-left h1 {
-  margin: 0 10px 0 0;
+.nav h1 {
+  margin: 0 10px;
   white-space: nowrap;
 }
 
 .menu-toggle-label, .nav-right label {
   cursor: pointer;
   font-size: 1.5rem;
-  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.menu-toggle-label:hover {
+  opacity: 0.8;
 }
 
 .nav-left form {
   margin-left: 10px;
 }
 
+.theme-switch-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: auto;
+  margin-bottom: 3vh;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #007bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .logout-button {
   background: none;
-  color: #fff;
+  color: white;
   border: none;
+  padding: 12px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .logout-button:hover {
-  background-color: red;
+  background-color: #b30c00;
+  opacity: 1;
 }
 
 .logout-button:focus {
@@ -92,55 +185,53 @@ button:hover {
   margin: 0;
 }
 
-/* Sidebar Styles */
 .sidebar-wrapper {
   position: fixed;
   top: 65px;
-  left: -250px;
+  right: -265px;
   width: 250px;
   height: calc(100% - 65px);
-  background: #1c2541;
-  color: #fff;
-  transition: left 0.3s ease;
+  background: var(--tertiary-color);
+  color: var(--text-color);
+  transition: right 0.3s ease;
   z-index: 999;
-}
-
-#menu-toggle:checked + .sidebar-wrapper {
-  left: 0;
-}
-
-.sidebar {
+  box-shadow: -12px 0px 2px 1px rgba(0, 0, 0, 0.2);
   display: flex;
-  padding: 0;
-  margin: 0;
-  list-style: none;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.sidebar-nav {
+
+
+#menu-toggle:checked ~ .sidebar-wrapper {
+  right: 0;
+}
+
+.sidebar, .sidebar-nav {
   display: flex;
   padding: 0;
   margin: 40px 0 0 0;
   list-style: none;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .sidebar-nav li {
   padding: 10px 0;
-  list-style: none;
-}
-
-.sidebar-nav ul {
-  margin-top: 40px;
-  padding: 0;
-  list-style: none;
+  width: 100%;
+  text-align: center;
 }
 
 .sidebar-nav a {
-  color: #fff;
-  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+  padding: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .quota {
@@ -152,7 +243,43 @@ button:hover {
   padding-top: 20px;
 }
 
-/* Main Content Area Styles */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+#search-bar:focus {
+  outline: none;
+}
+
+#search-bar::placeholder {
+  color: var(--text-color);
+}
+
+#search-btn {
+  background: none;
+  color: var(--text-color);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px; 
+}
+
+#search-btn::before {
+  content: "\1F50D"; 
+}
+
 main {
   margin-top: 65px;
   margin-left: 20px;
@@ -161,7 +288,34 @@ main {
   min-height: calc(100vh - 65px);
 }
 
-/* Folder and File Grid Styles */
+.drop-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; 
+}
+
+.drop-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto; 
+}
+
+.drop-message {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 .folder-section {
   margin-top: 20px;
 }
@@ -170,7 +324,7 @@ main {
   margin-top: 48px;
 }
 
-.file-grid-wrapper {
+.file-grid-wrapper, .folder-grid-wrapper {
   width: 100%;
 }
 
@@ -184,7 +338,7 @@ main {
 
 .folder-item, .file-item {
   background: var(--background-color);
-  border: 2px solid #1c2541;
+  border: 2px solid var(--tertiary-color);
   border-radius: 25px;
   padding: 15px;
   box-sizing: border-box;
@@ -198,8 +352,8 @@ main {
 }
 
 .folder-item:hover, .file-item:hover {
-  background: #0b132b;
-  border: 2px solid #1c2541;
+  background: var(--secondary-color);
+  border: 2px solid var(--tertiary-color);
 }
 
 .file-body, .folder-body {
@@ -221,31 +375,31 @@ main {
   height: 80px;
 }
 
-/* Target the first two SVGs (file icon and download icon) */
-.file-item:hover .file-body > a svg path {
+.file-item:hover .file-body > a svg path,
+.folder-item:hover .folder-body > a svg path {
   fill: var(--background-color);
   transition: fill 0.3s ease;
 }
 
-/* Keep the utility SVGs unchanged on hover */
-.file-item:hover .file-body-util-buttons svg path {
-  fill: #1C274C; /* Original fill color */
+.file-item:hover .file-body-util-buttons svg path,
+.folder-item:hover .folder-body-util-buttons svg path {
+  fill: var(--link-color);
 }
 
-/* Optional: Add a hover effect for utility icons */
-.file-body-util-buttons .svg-wrapper:hover svg path {
-  fill: var(--hover-color); /* Define a hover color for utility icons */
+.file-body-util-buttons .svg-wrapper:hover svg path,
+.folder-body-util-buttons .svg-wrapper:hover svg path {
+  fill: var(--hover-color);
   transition: fill 0.3s ease;
 }
 
-.folder-body p, .file-body p {
+.file-body p, .folder-body p {
   width: 100%;
   text-align: center;
-  word-wrap: break-word;
   margin: 10px 0;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-wrap: break-word;
+  max-height: 2.4em;
+  line-height: 1.2em;
 }
 
 .folder-body-util-buttons,
@@ -297,25 +451,9 @@ main {
   transform: scale(1.1);
 }
 
-/* Ensure SVGs within forms also get the glow effect */
 .folder-body-util-buttons form,
 .file-body-util-buttons form {
   display: contents;
-}
-
-/* Keep the utility SVGs unchanged on hover */
-.folder-item:hover .folder-body-util-buttons svg path {
-  fill: #1C274C; /* Original fill color */
-}
-
-.folder-body-util-buttons .svg-wrapper:hover svg path {
-  fill: var(--hover-color);
-  transition: fill 0.3s ease;
-}
-
-.folder-item:hover .folder-body > a svg path {
-  fill: var(--background-color);
-  transition: fill 0.3s ease;
 }
 
 form {
@@ -339,7 +477,7 @@ input[type="text"], input[type="file"] {
 
 .upload-button-btn {
   background: none;
-  color: #fff;
+  color: var(--text-color);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -352,7 +490,6 @@ input[type="text"], input[type="file"] {
   margin: 5px;
 }
 
-/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -367,10 +504,10 @@ input[type="text"], input[type="file"] {
 }
 
 .modal-content {
-  background-color: #1c2541;
+  background-color: var(--tertiary-color);
   margin: 15% auto;
   padding: 20px;
-  border: 2px solid #1c2541;
+  border: 2px solid var(--tertiary-color);
   border-radius: 15px;
   width: 300px;
   animation: fadeIn 0.5s;
@@ -385,7 +522,7 @@ input[type="text"], input[type="file"] {
 
 .close:hover,
 .close:focus {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -396,7 +533,6 @@ input[type="text"], input[type="file"] {
   align-items: center;
 }
 
-/* Breadcrumb Styles */
 #folder-breadcrumb {
   margin-left: 20px;
 }
@@ -417,31 +553,150 @@ input[type="text"], input[type="file"] {
 .breadcrumb-item + .breadcrumb-item::before {
   content: "⤳";
   padding: 0 8px;
-  color: #0b132b;
+  color: var(--secondary-color);
 }
 
 .breadcrumb-item a {
   text-decoration: none;
-  color: #0b132b;
+  color: var(--secondary-color);
 }
 
 .breadcrumb-item a:hover {
-  color: #ffffff;
-  text-decoration: none;
+  color: var(--text-color);
 }
 
 .breadcrumb-item.active {
-  color: #ffffff;
+  color: var(--text-color);
 }
 
-/* Footer Styles */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background-color: var(--tertiary-color);
+  margin: 10% auto;
+  padding: 30px;
+  border: none;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideIn 0.3s;
+}
+
+
+.close {
+  color: var(--text-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--hover-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="file"],
+.modal-content select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--background-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="file"]:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.modal-content input::placeholder,
+.modal-content select::placeholder {
+  color: white;
+  opacity: 0.7; 
+}
+
+
+.modal-content button[type="submit"] {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: var(--hover-color);
+}
+
+.modal-content input[type="file"] {
+  display: none;
+}
+
+.modal-content .file-input-label {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--background-color);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-content .file-input-label:hover {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  text-align: center;
+}
+
 footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #0b132b;
-  color: #fff;
+  background: var(--secondary-color);
+  color: var(--text-color);
   text-align: center;
   padding: 0;
   z-index: 1000;
@@ -461,7 +716,7 @@ progress[value] {
 }
 
 progress[value]::-webkit-progress-bar {
-  background-color: #0b132b;
+  background-color: var(--secondary-color);
 }
 
 progress[value]::-webkit-progress-value {
@@ -472,7 +727,7 @@ progress[value]::-webkit-progress-value {
     -webkit-linear-gradient(top, 
                             rgba(255, 255, 255, .25), 
                             rgba(0, 0, 0, .25)),
-    -webkit-linear-gradient(right, #1c2541, #0b132b);
+    -webkit-linear-gradient(left, var(--background-color), var(--button-color));
   background-size: 35px 20px, 100% 100%, 100% 100%;
   transition: opacity 0.5s ease;
 }
@@ -483,8 +738,8 @@ progress[value]::-webkit-progress-value {
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  color: #ffffff;
-  background-color: #0b132b;
+  color: var(--text-color);
+  background-color: var(--secondary-color);
   padding: 2px 5px;
   border-radius: 3px;
   font-size: 12px;
@@ -500,8 +755,6 @@ progress[value]::-webkit-progress-value {
   opacity: 1;
 }
 
-/* Message Styles */
-
 .messages {
   position: fixed;
   top: 10px;
@@ -516,7 +769,7 @@ progress[value]::-webkit-progress-value {
 .messages .error,
 .messages .info,
 .messages .warning {
-  color: #ffffff;
+  color: var(--text-color);
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
@@ -524,23 +777,11 @@ progress[value]::-webkit-progress-value {
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-.messages .success {
-  background-color: #388e3c;
-}
+.messages .success { background-color: #388e3c; }
+.messages .error { background-color: #d32f2f; }
+.messages .info { background-color: #1976d2; }
+.messages .warning { background-color: #ffa000; }
 
-.messages .error {
-  background-color: #d32f2f;
-}
-
-.messages .info {
-  background-color: #1976d2;
-}
-
-.messages .warning {
-  background-color: #ffa000;
-}
-
-/* Animation for removing messages */
 @keyframes fadeOutUp {
   from {
     opacity: 1;
@@ -556,7 +797,6 @@ progress[value]::-webkit-progress-value {
   animation: fadeOutUp 0.5s ease-in-out forwards;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -567,15 +807,16 @@ progress[value]::-webkit-progress-value {
   to {opacity: 0;}
 }
 
-.modal.hide {
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+.modal.hide, .modal-content.hide {
   animation: fadeOut 0.5s;
 }
 
-.modal-content.hide {
-  animation: fadeOut 0.5s;
-}
-
-/* Responsive Styles */
 @media (max-width: 1200px) {
   .folder-grid, .file-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -590,7 +831,8 @@ progress[value]::-webkit-progress-value {
 
 @media (max-width: 600px) {
   .folder-grid, .file-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
 
   main {
@@ -600,12 +842,25 @@ progress[value]::-webkit-progress-value {
 
   .folder-item, .file-item {
     border-radius: 15px;
+    width: 100%;
+  }
+
+  .file-body, .folder-body {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+    padding: 20px;
   }
 }
 
 @media (max-width: 400px) {
   .folder-grid, .file-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .folder-item, .file-item {
@@ -620,5 +875,11 @@ progress[value]::-webkit-progress-value {
   .folder-body a:first-child svg:first-child, .file-body a:first-child svg:first-child {
     width: 60px;
     height: 60px;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+    padding: 20px;
   }
 }

@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', login_required(views.drive_view), name='drive'),
     path('folder/<str:hash>/', login_required(views.folder_view), name='folder'),
+    path('search/', views.search_view, name='search'),
 
     path('upload_file/', views.upload_file, name='upload_file'),
     path('upload_folder/', views.upload_folder, name='upload_folder'),

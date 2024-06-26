@@ -3,17 +3,73 @@
 
 {% block content %}
 <main id="landing-main">
-  <section class="home-section" id="home-main-section">
-    <h2>Home</h2>
-    <p>Welcome to EDrive, a simple cloud storage service.</p>
+  <section class="home-section" id="home-hero-section">
+      <div class="hero-content">
+          <h1>Welcome to EDrive</h1>
+          <p>Your files, anywhere, anytime.</p>
+          <a href="{% url 'signup' %}" class="cta-button">Get Started</a>
+      </div>
   </section>
-  <section class="home-section" id="home-about-section">
-    <h2>About</h2>
 
+  <section class="home-section" id="home-features-section">
+      <h2>Why Choose EDrive?</h2>
+      <div class="features-grid">
+          <div class="feature-item">
+              <img src="../static/images/svgs/lock-password-svgrepo-com.svg" alt="Secure Storage" class="feature-icon">
+              <h3>Secure Storage</h3>
+          </div>
+          <div class="feature-item">
+              <img src="../static/images/svgs/file-smile-svgrepo-com.svg" alt="Simple Sharing" class="feature-icon">
+              <h3>Simple</h3>
+          </div>
+          <div class="feature-item">
+            <img src="../static/images/svgs/globus-svgrepo-com.svg" alt="Easy Access" class="feature-icon">
+            <h3>Easy Access</h3>
+        </div>
+      </div>
   </section>
-  <section class="home-section" id="home-premium-section">
-    <h2>Premium</h2>
-    <p>Upgrade your account to premium to get more storage space.</p>
+
+  <section class="home-section" id="home-pricing-section">
+      <h2>Choose Your Plan</h2>
+      <div class="pricing-grid">
+          <div class="pricing-item">
+              <h3>Basic</h3>
+              <p class="price">Free</p>
+              <ul>
+                  <li>50 MB Storage</li>
+                  <li>Basic File Uploading Downloading</li>
+              </ul>
+              <a href="{% url 'signup' %}" class="plan-button">Sign Up</a>
+          </div>
+
+          <div class="pricing-item featured">
+            <h3>Premium+</h3>
+            <p class="price">€9.99/mo</p>
+            <ul>
+                <li>500 MB Storage</li>
+                <li>Nothing extra</li>
+                <li>You'll take your 500 MBs and like it</li>
+            </ul>
+            <a href="{% url 'premium' %}" class="plan-button">Upgrade</a>
+        </div>
+
+          <div class="pricing-item">
+            <h3>Premium</h3>
+            <p class="price">€4.99/mo</p>
+            <ul>
+                <li>100 MB Storage</li>
+                <li>Nothing extra</li>
+            </ul>
+            <a href="{% url 'premium' %}" class="plan-button">Upgrade</a>
+        </div>
+          
+      </div>
+  </section>
+
+  <section class="home-section" id="home-cta-section">
+      <h2>Ready to get started?</h2>
+      <p>Join about 4 users who trust EDrive with their files.</p>
+      <a href="{% url 'signup' %}" class="cta-button">Create Your Free Account</a>
   </section>
 </main>
 {% endblock %}

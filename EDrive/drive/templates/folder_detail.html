@@ -59,7 +59,7 @@
               <form action="{% url 'delete_folder' folder.hash %}" method="post">
                 {% csrf_token %}
                 <div class="svg-wrapper">
-                  <svg class="icon-settings" data-folder-hash="{{ folder.hash }}" data-action="{% url 'delete_folder' folder.hash %}" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="icon-settings trash-btn" data-folder-hash="{{ folder.hash }}" data-action="{% url 'delete_folder' folder.hash %}" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.21049 3.04233C2.74667 3.58092 2.58666 4.26887 2.60662 5.25H21.3937C21.4136 4.26887 21.2536 3.58092 20.7898 3.04233C19.8922 2 18.2724 2 15.033 2H8.96727C5.72784 2 4.10813 2 3.21049 3.04233Z" fill="#1C274C"/>
                       <path d="M3.03365 8.89001C2.91212 8.07985 2.80597 7.37214 2.72969 6.75H3.68934L4.93934 8L3.16613 9.77321L3.03365 8.89001Z" fill="#1C274C"/>
                       <path d="M3.59911 12.6598L3.94874 14.9906L4.93934 14L3.59911 12.6598Z" fill="#1C274C"/>
@@ -123,10 +123,10 @@
                       <path d="M19.0786 7.37044C20.3071 6.14188 20.3071 4.14999 19.0786 2.92142C17.85 1.69286 15.8581 1.69286 14.6296 2.92142L13.9199 3.63105C13.9296 3.6604 13.9397 3.69015 13.9502 3.72028C14.2103 4.47 14.701 5.45281 15.6243 6.37602C16.5475 7.29923 17.5303 7.78999 18.28 8.05009C18.31 8.0605 18.3396 8.07054 18.3688 8.08021L19.0786 7.37044Z" fill="#1C274C"/>
                     </svg>
                   </div>
-                  <form action="{% url 'delete_file' file.hash %}" method="post">
+                  <form id="delete-file-form-{{ file.hash }}" action="{% url 'delete_file' file.hash %}" method="post">
                     {% csrf_token %}
                     <div class="svg-wrapper">
-                      <svg class="icon-settings" data-file-hash="{{ file.hash }}" data-action="{% url 'delete_file' file.hash %}" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg class="icon-settings trash-btn" data-file-hash="{{ file.hash }}" data-action="{% url 'delete_file' file.hash %}" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.21049 3.04233C2.74667 3.58092 2.58666 4.26887 2.60662 5.25H21.3937C21.4136 4.26887 21.2536 3.58092 20.7898 3.04233C19.8922 2 18.2724 2 15.033 2H8.96727C5.72784 2 4.10813 2 3.21049 3.04233Z" fill="#1C274C"/>
                         <path d="M3.03365 8.89001C2.91212 8.07985 2.80597 7.37214 2.72969 6.75H3.68934L4.93934 8L3.16613 9.77321L3.03365 8.89001Z" fill="#1C274C"/>
                         <path d="M3.59911 12.6598L3.94874 14.9906L4.93934 14L3.59911 12.6598Z" fill="#1C274C"/>
@@ -146,6 +146,11 @@
                       </svg>  
                     </div>
                   </form>
+                  <div class="svg-wrapper">
+                    <svg class="icon-settings" data-file-hash="{{ file.hash }}" data-toggle-target="moveFileModal" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22 11.7979V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7713 22 14 22H10C6.22878 22 4.34315 22 3.17157 20.8284C2.19725 19.8541 2.03321 18.3859 2.00559 15.7501H10.6937L8.43392 17.3935C8.09893 17.6371 8.02487 18.1062 8.26849 18.4412C8.51212 18.7762 8.98118 18.8502 9.31617 18.6066L13.4412 15.6066C13.6352 15.4655 13.75 15.24 13.75 15.0001C13.75 14.7601 13.6352 14.5346 13.4412 14.3935L9.31617 11.3935C8.98118 11.1499 8.51212 11.2239 8.26849 11.5589C8.02487 11.8939 8.09893 12.363 8.43392 12.6066L10.6937 14.2501H2.00001L2 14L2.00003 6.94975C2.00003 6.06725 2.00003 5.62594 2.06938 5.25839C2.37467 3.64031 3.64033 2.37464 5.25841 2.06935C5.62597 2 6.06724 2 6.94977 2C7.33644 2 7.52978 2 7.71559 2.01738C8.51667 2.09229 9.27654 2.40704 9.89596 2.92051C10.0396 3.03961 10.1763 3.17633 10.4498 3.44975L11 4C11.8158 4.81578 12.2237 5.22367 12.7121 5.49543C12.9805 5.64471 13.2651 5.7626 13.5604 5.84678C14.0979 6 14.6748 6 15.8284 6H16.2021C18.8345 6 20.1507 6 21.0062 6.76946C21.0849 6.84024 21.1598 6.91514 21.2306 6.99383C22 7.84935 22 9.16554 22 11.7979Z" fill="#1C274C"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
@@ -156,44 +161,4 @@
       <p>There are no files in the library.</p>
     {% endif %}
   </section>
-
-<!-- Modals -->
-<div id="renameFolderModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <form id="renameFolderForm" action="" method="post">
-      {% csrf_token %}
-      <input type="text" name="new_name" required placeholder="New folder name">
-      <button type="submit">Rename</button>
-    </form>
-  </div>
-</div>
-
-<div id="moveFolderModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <form id="moveFolderForm" action="" method="post">
-      {% csrf_token %}
-      <select name="destination_folder" required>
-        <option value="">Select destination folder</option>
-        {% for f in folder_list %}
-        <option value="{{ f.hash }}">{{ f.folder_name }}</option>
-        {% endfor %}
-      </select>
-      <button type="submit">Move</button>
-    </form>
-  </div>
-</div>
-
-<div id="renameFileModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <form id="renameFileForm" action="" method="post">
-      {% csrf_token %}
-      <input type="text" name="new_name" placeholder="Enter new name" required>
-      <button type="submit">Rename</button>
-    </form>
-  </div>
-</div>
-
 {% endblock %}

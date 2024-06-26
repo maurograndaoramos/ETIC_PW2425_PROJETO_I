@@ -1,11 +1,37 @@
 {% extends "home_generic.html" %}
 
 {% block content %}
-<h1>SUP BRO</h1>
-<p>
-  Welcome to EDrive, a website developed by
-  <em>me</em>!
-</p>
+<main id="about-main">
+    <section class="about-hero">
+        <h1>About EDrive</h1>
+        <p class="subtitle">Your files, anywhere, anytime.</p>
+    </section>
 
+    <section class="about-content">
+        <div class="about-info">
+            <h2>Our Story</h2>
+            <p>Welcome to EDrive, a web app that lets you store your files and access them from anywhere. It was created by a team of developers composed by one person, who is a student at the ETIC_Algarve. </p>
+            <p>The app was created as a project for the Web Development course.</p>
+        </div>
+
+        <div class="about-features">
+            <h2>Features</h2>
+            <ul>
+                <li>You can upload stuff</li>
+                <li>You can download stuff</li>
+                <li>Access from any device</li>
+                <li>User-friendly-ish interface</li>
+            </ul>
+        </div>
+
+        <div class="about-development">
+            <h2>Under Development</h2>
+            <p>The app is still in development, so there are still some features that are not yet implemented. But I can work on it!</p>
+            
+            <p>It'll be 50€ per hour, though. Just kidding. I'll do it for 3.50€.</p>
+
+            <p>Just kidding again. I'll do it for free. Just give me a good grade, please.</p>
+        </div>
+    </section>
+</main>
 {% endblock %}
-

@@ -28,3 +28,4 @@ def staff_redirect_middleware(get_response):
         return response
 
     return middleware
+

@@ -1,10 +1,45 @@
 {% extends "home_generic.html" %}
 
 {% block content %}
-<h1>PAY PREMIUM FOR MORE MBS</h1>
-<p>
-  Welcome to EDrive, a website developed by
-  <em>me</em>!
-</p>
+<main id="premium-main">
+    <section class="premium-hero">
+        <h1>EDrive Premium</h1>
+        <p class="subtitle">More storage, fewer excuses to not deliver Projetos do Curso on time.</p>
+    </section>
 
+    <section class="premium-content">
+        <div class="premium-info">
+            <h2>Why Go Premium?</h2>
+            <p>Well, why not? You get:</p>
+            <ul>
+                <li>A whopping 100 MB of extra storage</li>
+                <li>The ability to upload files slightly larger than a potato</li>
+                <li>More space than the potato chip bag from the ETIC_Algarve vending machine!</li>
+            </ul>
+        </div>
+
+        <div class="premium-pricing">
+            <h2>Pricing</h2>
+            <p class="price">Just 5 euros. Or 10!*</p>
+            <p class="price-footnote">*I'll accept a 20 in curso notas</p>
+        </div>
+
+        <div class="premium-development">
+            <h2>Future Features</h2>
+            <p>At the moment, none.</p>
+            <p>But suggestions for new features are welcome. Implementation of said features is... not unwelcome, just unlikely, but I'll consider it.</p>
+        </div>
+
+        <div class="premium-cta">
+            <h2>Ready to Upgrade?</h2>
+            <p>If you're still reading this, kudos for the pachorra. Just log in to either of the options below.</p>
+            <a href="{% url 'signup' %}" class="cta-button">Sign Up for Premium</a>
+            <a href="{% url 'login' %}" class="cta-button secondary">Already Premium? Log In</a>
+        </div>
+    </section>
+
+    <section class="premium-footer">
+        <p>Note: I'm not actually providing a service - Come on, just... Just go log in.</p>
+    </section>
+</main>
 {% endblock %}

@@ -1,21 +1,36 @@
 {% extends 'home_generic.html' %}
 
 {% block title %}
-  <title>Signup - Local Library</title>
+  <title>Signup - EDrive</title>
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.username.label_tag }}<br>
-    {{ form.username }}<br>
-    {{ form.email.label_tag }}<br>
-    {{ form.email }}<br>
-    {{ form.password1.label_tag }}<br>
-    {{ form.password1 }}<br>
-    {{ form.password2.label_tag }}<br>
-    {{ form.password2 }}<br>
-    <button type="submit">Sign up</button>
-</form>
-<a href="{% url 'login' %}">Already have an account?</a>
+<div class="signup-container">
+  <div class="signup-card">
+    <h2>Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-field">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div class="form-field">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="form-field">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+      </div>
+      <div class="form-field">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+      </div>
+      <button type="submit" class="signup-button">Sign Up</button>
+    </form>
+    <div class="signup-links">
+      <a href="{% url 'login' %}">Already have an account?</a>
+    </div>
+  </div>
+</div>
 {% endblock %}
