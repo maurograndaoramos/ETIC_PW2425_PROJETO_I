@@ -36,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
         openModal('upload-file-modal');
     });
 
+    document.getElementById('upload-file-btn').addEventListener('click', function() {
+        openModal('upload-file-modal');
+    });
+
+    document.getElementById('infobox-svg').addEventListener('click', function() {
+        openModal('infoboxModal');
+    });
+
     document.querySelectorAll('.close').forEach(function(closeBtn) {
         closeBtn.addEventListener('click', function() {
             closeModal(this.closest('.modal').id);
@@ -45,6 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.onclick = function(event) {
         if (event.target.classList.contains('modal')) {
             closeModal(event.target.id);
+        }
+    };
+
+    window.onkeydown = function(event) {
+        if (event.key === 'Escape') {
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                if (modal.style.display === 'block') {
+                    closeModal(modal.id);
+                }
+            });
         }
     };
 
@@ -87,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Honestamente, só queria que o código fosse mais limpo no HTML e não ter um botão por cima do delete svg
     document.querySelectorAll('.trash-btn').forEach(function(icon) {
-        icon.addEventListener('click', function(e) {
-            e.preventDefault();
+        icon.addEventListener('click', function(event) {
+            event.preventDefault();
             const action = this.getAttribute('data-action');
             const itemType = this.hasAttribute('data-folder-hash') ? 'folder' : 'file';
             if (confirm(`Are you sure you want to delete this ${itemType}?`)) {
@@ -126,8 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }).then(response => {
             if (response.ok) {
                 window.location.reload();
-            } else {
-                console.error('Upload failed');
             }
         });
     });
@@ -154,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   
-    function switchTheme(e) {
-      if (e.target.checked) {
+    function switchTheme(event) {
+      if (event.target.checked) {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
       } else {
@@ -172,38 +188,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Isto foi feito para permitir que o utilizador veja o nome da extensão do ficheiro mesmo que o nome seja muito longo.
     function truncateFileName(element, maxLength) {
-        const fileName = element.textContent;
-        const lastDotIndex = fileName.lastIndexOf('.');
-        
-        if (lastDotIndex === -1 || fileName.length <= maxLength) {
-          return;
+        const originalText = element.textContent.trim();
+    
+        if (originalText.length <= maxLength) {
+            return;
         }
-      
-        const name = fileName.slice(0, lastDotIndex);
-        const extension = fileName.slice(lastDotIndex);
-        
-        const availableLength = maxLength - extension.length - 3;
-        if (availableLength < 5) {
-          return;
+    
+        const lastDotIndex = originalText.lastIndexOf('.');
+        const hasExtension = lastDotIndex !== -1 && (originalText.length - lastDotIndex <= 7);
+    
+        let result;
+        if (hasExtension) {
+            const name = originalText.slice(0, lastDotIndex);
+            const extension = originalText.slice(lastDotIndex);
+            const availableLength = maxLength - extension.length - 3;
+            
+            if (availableLength >= 4) {
+                const start = name.slice(0, Math.ceil(availableLength / 2));
+                const end = name.slice(-Math.floor(availableLength / 2));
+                result = start + '...' + end + extension;
+            } else {
+                result = originalText.slice(0, maxLength - 5) + '...';
+            }
+        } else {
+            if (originalText.length > maxLength) {
+                const halfLength = Math.floor((maxLength - 3) / 2);
+                const start = originalText.slice(0, maxLength - 3 - halfLength);
+                const end = originalText.slice(-halfLength);
+                result = start + '...' + end;
+            } else {
+                result = originalText;
+            }
         }
-        
-        const start = name.slice(0, Math.ceil(availableLength / 2));
-        const end = name.slice(-Math.floor(availableLength / 2));
-        
-        element.textContent = start + '...' + end + extension;
+        element.textContent = result;
     }
-      
-    document.querySelectorAll('.file-body p').forEach(element => {
-        truncateFileName(element, 20);
+
+    document.querySelectorAll('.file-body p, .folder-body p, .breadcrumb-item a, .breadcrumb-item.active').forEach(element => {
+        truncateFileName(element, 18);
     });
 
-    // Context menu
+    // Isto cria e depois abre o dropdown menu on right click
     const body = document.querySelector('body');
     const nav = document.querySelector('nav');
     const footer = document.querySelector('footer');
-
-    // Create custom context menu
     const contextMenu = document.createElement('div');
+
     contextMenu.id = 'custom-context-menu';
     contextMenu.innerHTML = `
         <ul>
@@ -213,27 +242,23 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.appendChild(contextMenu);
 
-    // Style the context menu
     contextMenu.style.position = 'fixed';
     contextMenu.style.zIndex = '9999';
     contextMenu.style.display = 'none';
 
-    // Event listener for right-click
-    body.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        if (!nav.contains(e.target) && !footer.contains(e.target)) {
-            contextMenu.style.top = `${e.clientY}px`;
-            contextMenu.style.left = `${e.clientX}px`;
+    body.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        if (!nav.contains(event.target) && !footer.contains(event.target)) {
+            contextMenu.style.top = `${event.clientY}px`;
+            contextMenu.style.left = `${event.clientX}px`;
             contextMenu.style.display = 'block';
         }
     });
 
-    // Hide context menu on left click anywhere
     document.addEventListener('click', function() {
         contextMenu.style.display = 'none';
     });
 
-    // Handle menu item clicks
     document.getElementById('create-folder').addEventListener('click', function() {
         openModal('create-folder-modal');
         contextMenu.style.display = 'none';
@@ -244,12 +269,89 @@ document.addEventListener('DOMContentLoaded', function() {
         contextMenu.style.display = 'none';
     });
 
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.style.display = 'block';
-        } else {
-            console.error(`Modal with id ${modalId} not found`);
+    // Esta função serve de controlo de CTRL+key para algumas funcionalidades           
+    document.addEventListener('keydown', handleKeyboardShortcuts);
+
+    function handleKeyboardShortcuts(event) {
+        if (event.ctrlKey) {
+            switch (event.key.toLowerCase()) {
+                case 'u':
+                    event.preventDefault();
+                    document.getElementById('upload-file-btn').click();
+                    break;
+                case 'n':
+                    event.preventDefault();
+                    document.getElementById('create-folder-btn').click
+                    break;
+                case 'f':
+                    event.preventDefault();
+                    document.getElementById('search-bar').focus();
+                    break;
+            }
+        }
+    }
+
+    // Esta função serve para controlar o conteudo dropped e fazer upload do ficheiro pelo form
+    const mainContent = document.getElementById('main-content');
+    const dropOverlay = document.getElementById('drop-overlay');
+    const fileForm = document.getElementById('upload-file-form');
+    const folderForm = document.getElementById('upload-folder-form');
+    const fileInput = document.getElementById('file-input');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        mainContent.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        mainContent.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropOverlay.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(event) {
+        dropOverlay.classList.add('active');
+    }
+
+    function unhighlight(event) {
+        dropOverlay.classList.remove('active');
+    }
+
+    dropOverlay.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(event) {
+        const dt = event.dataTransfer;
+        const items = dt.items;
+    
+        if (items) {
+            let isFolder = false;
+            let files = [];
+    
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i].webkitGetAsEntry();
+                if (item && item.isDirectory) {
+                    isFolder = true;
+                    break;
+                } else if (item && item.isFile) {
+                    files.push(items[i].getAsFile());
+                }
+            }
+    
+            if (isFolder) {
+                const folderInput = document.getElementById('folder-input');
+                folderInput.files = dt.files;
+                folderForm.submit();
+            } else if (files.length > 0) {
+                const fileInput = document.getElementById('file-input');
+                fileInput.files = dt.files;
+                fileForm.submit();
+            }
         }
     }
 });

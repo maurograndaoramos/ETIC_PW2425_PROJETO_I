@@ -76,7 +76,7 @@
   {% if file_list %}
     <div class="file-grid-wrapper">
       <div class="file-grid">
-        {% for file in file_list %}
+        {% for file in file_list|dictsort:"file_name" %}
           <div class="file-item">
             <div class="file-body">
               <a href="{% url 'view_file' file.hash %}" target="_blank">

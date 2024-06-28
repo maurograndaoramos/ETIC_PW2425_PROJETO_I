@@ -311,29 +311,23 @@ def move_folder(request, hash):
         return redirect('drive')
 
 
-from django.http import JsonResponse
-
 @login_required
 def upload_file(request):
     current_user = request.user
     if request.method == 'POST':
         file = request.FILES['file']
         file_parent_hash = request.POST.get('folder_id', None)
-        path = request.POST.get('path', '')
         file_parent = None
 
         if file_parent_hash:
             file_parent = Folder.objects.get(hash=file_parent_hash)
             
-        ext = os.path.splitext(file.name)[1]
-        file_name = path + file.name  
+        original_name, ext = os.path.splitext(file.name)
+        file_name = file.name
         file_size = file.size
 
         if not has_enough_quota(current_user, file_size):
-            message = "You do not have enough quota to upload this file."
-            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'error', 'message': message})
-            messages.error(request, message)
+            messages.error(request, "You do not have enough quota to upload this file.")
             if file_parent:
                 return redirect('folder', file_parent.hash)
             else:
@@ -342,22 +336,15 @@ def upload_file(request):
         file_timestamp = timezone.now()
 
         counter = 1
-        original_file_name = file_name
+
         while File.objects.filter(file_name=file_name, file_parent=file_parent, owner=current_user).exists():
             counter += 1
-            name, ext = os.path.splitext(original_file_name)
-            file_name = f"{name} ({counter}){ext}"
+            file_name = f"{original_name} ({counter}){ext}"
 
         if counter > 1:
-            message = f"A file with that name already exists. Renamed to {file_name}."
-            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'warning', 'message': message})
-            messages.warning(request, message)
+            messages.warning(request, "A file with that name already exists. Renamed to " + file_name + ".")
         else:
-            message = f"File {file_name} has been uploaded."
-            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-                return JsonResponse({'status': 'success', 'message': message})
-            messages.success(request, message)
+            messages.success(request, "File " + file_name + " has been uploaded.")
 
         temp_path = default_storage.save(file_name, ContentFile(file.read()))
 
@@ -370,15 +357,6 @@ def upload_file(request):
             file_parent=file_parent
         )
         new_file.save() 
-
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({
-                'status': 'success',
-                'message': f"File {file_name} has been uploaded.",
-                'file_id': new_file.id,
-                'file_name': new_file.file_name,
-                'file_size': new_file.file_size,
-            })
 
         if file_parent:
             return redirect('folder', file_parent.hash)
@@ -415,10 +393,84 @@ def upload_folder(request):
             return redirect('folder', folder_parent.hash) if folder_parent else redirect('drive')
 
         try:
-            uploaded_files, created_folders, renamed_files = process_uploads(list(zip(files, file_paths)), current_user, folder_parent)
+            uploaded_files = 0
+            created_folders = 0
+            folder_structure = {}
             
-            for original_name, new_name in renamed_files:
-                messages.info(request, f"A file named '{original_name}' already exists. Renamed to '{new_name}'.")
+            # Primeira volta: Criar estrutura de pastas
+            for file, path in zip(files, file_paths):
+                path_parts = path.split('/')
+                current_dict = folder_structure
+                for part in path_parts[:-1]:
+                    if part not in current_dict:
+                        current_dict[part] = {}
+                    current_dict = current_dict[part]
+
+            # Segunda volta: Cria as pastas com a estrutura da primeira volta
+            def create_folders(structure, parent):
+                nonlocal created_folders
+                for folder_name, subfolders in structure.items():
+                    original_name = folder_name
+                    counter = 1
+                    while Folder.objects.filter(folder_name=folder_name, folder_parent=parent, owner=current_user).exists():
+                        counter += 1
+                        folder_name = f"{original_name} ({counter})"
+
+                    if counter > 1:
+                        messages.warning(request, f"A folder named '{original_name}' already exists. Renamed to '{folder_name}'.")
+                    else:
+                        messages.success(request, f"Folder '{folder_name}' has been created.")
+                    
+                    new_folder = Folder(
+                        folder_name=folder_name,
+                        owner=current_user,
+                        folder_parent=parent,
+                        created_at=timezone.now()
+                    )
+                    new_folder.save()
+                    created_folders += 1
+                    
+                    create_folders(subfolders, new_folder)
+            
+            create_folders(folder_structure, folder_parent)
+
+            # Terceira volta: Grava os files no sítio certo
+            for file, path in zip(files, file_paths):
+                path_parts = path.split('/')
+                current_folder = folder_parent
+                for part in path_parts[:-1]:
+                    current_folder = Folder.objects.filter(
+                        folder_name__startswith=part,
+                        folder_parent=current_folder,
+                        owner=current_user
+                    ).order_by('-created_at').first()
+                file_name = path_parts[-1]
+                original_name = file_name
+                counter = 1
+
+                while File.objects.filter(file_name=file_name, file_parent=current_folder, owner=current_user).exists():
+                    counter += 1
+                    name, ext = os.path.splitext(original_name)
+                    file_name = f"{name} ({counter}){ext}"
+
+                if counter > 1:
+                    messages.warning(request, f"A file named '{original_name}' already exists. Renamed to '{file_name}'.")
+                else:
+                    messages.success(request, f"File '{file_name}' has been uploaded.")
+
+                save_path = file_name
+                temp_path = default_storage.save(save_path, ContentFile(file.read()))
+
+                new_file = File(
+                    file_path=temp_path,
+                    file_name=file_name,
+                    file_size=file.size,
+                    file_timestamp=timezone.now(),
+                    owner=current_user,
+                    file_parent=current_folder
+                )
+                new_file.save()
+                uploaded_files += 1
 
             messages.success(request, f"Successfully uploaded {uploaded_files} files and created {created_folders} folders.")
         except Exception as e:
@@ -427,75 +479,6 @@ def upload_folder(request):
         return redirect('folder', folder_parent.hash) if folder_parent else redirect('drive')
     else:
         return redirect('drive')
-
-def process_uploads(file_data, user, parent_folder):
-    uploaded_files = 0
-    created_folders = 0
-    renamed_files = []
-    folder_structure = {}
-    temp_directories = set()
-    
-    # Primeira volta: Criar estrutura de pastas
-    for file, path in file_data:
-        path_parts = path.split('/')
-        current_dict = folder_structure
-        for part in path_parts[:-1]:
-            if part not in current_dict:
-                current_dict[part] = {}
-            current_dict = current_dict[part]
-
-
-    # Segunda volta: Cria as pastas com a estrutura da primeira volta
-    def create_folders(structure, parent):
-        nonlocal created_folders
-        for folder_name, subfolders in structure.items():
-            try:
-                new_folder = Folder.objects.get(
-                    folder_name=folder_name,
-                    owner=user,
-                    folder_parent=parent
-                )
-            except Folder.DoesNotExist:
-                new_folder = Folder(
-                    folder_name=folder_name,
-                    owner=user,
-                    folder_parent=parent,
-                    created_at=timezone.now()
-                )
-                new_folder.save()
-                created_folders += 1
-            create_folders(subfolders, new_folder)
-    create_folders(folder_structure, parent_folder)
-
-    # Terceira volta: Grava os files no sítio certo
-    for file, path in file_data:
-        path_parts = path.split('/')
-        current_folder = parent_folder
-        for part in path_parts[:-1]:
-            current_folder = Folder.objects.get(folder_name=part, folder_parent=current_folder, owner=user)
-        file_name = path_parts[-1]
-        original_name, ext = os.path.splitext(file_name)
-        counter = 1
-        while File.objects.filter(file_name=file_name, file_parent=current_folder, owner=user).exists():
-            counter += 1
-            file_name = f"{original_name} ({counter}){ext}"
-        if counter > 1:
-            renamed_files.append((f"{original_name}{ext}", file_name))
-        
-        save_path = file_name
-        temp_path = default_storage.save(save_path, ContentFile(file.read()))
-
-        new_file = File(
-            file_path=temp_path,
-            file_name=file_name,
-            file_size=file.size,
-            file_timestamp=timezone.now(),
-            owner=user,
-            file_parent=current_folder
-        )
-        new_file.save()
-
-    return uploaded_files, created_folders, renamed_files
 
 @login_required
 def create_folder(request):

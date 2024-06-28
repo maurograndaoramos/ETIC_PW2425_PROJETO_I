@@ -464,7 +464,8 @@ padding: 0%;
   padding: 40px 20px;
   font-family: Arial, sans-serif;
   color: var(--text-color);
-  background-color: var(--background-color);
+  background: linear-gradient(rgba(11, 19, 43, 0.8), rgba(11, 19, 43, 0.8)), url(/static/images/hero-background.jpg);
+  background-size: cover;
 }
 
 .about-hero {
@@ -475,12 +476,12 @@ padding: 0%;
 .about-hero h1 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .about-hero .subtitle {
   font-size: 1.5rem;
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .about-content {
