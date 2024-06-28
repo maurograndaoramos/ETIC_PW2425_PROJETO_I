@@ -73,6 +73,7 @@ Before you begin, ensure you have the following installed:
 3. **Set up the project**
    ```bash
    poetry install
+   poetry shell
    make all
    ```
 

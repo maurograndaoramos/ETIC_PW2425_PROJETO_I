@@ -296,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropOverlay = document.getElementById('drop-overlay');
     const fileForm = document.getElementById('upload-file-form');
     const folderForm = document.getElementById('upload-folder-form');
+    // Nem sei o que ia fazer com isto. Too late now! ┐(~ー~;)┌
     const fileInput = document.getElementById('file-input');
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
